@@ -1,0 +1,25 @@
+@import "/src/components/colors/colors.vars.scss";
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: absolute;
+  width: 300px;
+  height: 288px;
+  left: calc(50% - 300px/2);
+  top: calc(50% - 288px/2);
+
+  background: $white;
+  box-shadow: 0px 0px 5px 3px $grey;
+  border-radius: 5px;
+
+  .login_title-login {
+    position: static;
+    width: 240px;
+    height: 19px;
+    left: 0px;
+    top: 0px;
+  }
+}

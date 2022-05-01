@@ -1,8 +1,9 @@
 import React from "react";
+import Login from "../../pages/login/login";
 
 const App = () => {
   return (
-    <h1>Hello. Let's start</h1>
+    <Login />
   )
 }
 
