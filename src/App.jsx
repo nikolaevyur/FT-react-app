@@ -1,8 +1,10 @@
 import React from "react";
+import Login from "../src/pages/login/login";
+import './App.scss'
 
 const App = () => {
   return (
-    <h1>Hello. Let's start</h1>
+    <Login />
   )
 }
 
