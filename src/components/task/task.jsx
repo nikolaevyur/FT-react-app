@@ -1,5 +1,7 @@
 import React from "react";
-import Type from "../type/type";
+import Priority from "../task-priority/task-priority";
+import Status from "../task-status/task-status";
+import Type from "../task-type/task-type";
 import "./task.scss"
 
 const Task = (props) => {
@@ -8,8 +10,8 @@ const Task = (props) => {
         <Type type={props.type}/>
         <div className="task__name">{props.name}</div>
         <div className="task__user">{props.user}</div>
-        <div className="task__status"></div>
-        <div className="task__priority"></div>
+        <Status status={props.status}/>
+        <Priority priority={props.priority}/>
         <div className="task__burger"></div>
     </div>
   )

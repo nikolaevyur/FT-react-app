@@ -5,4 +5,12 @@
   flex-direction: row;
   align-items: center;
   padding: 20px 30px;
+
+  &__name {
+    width: 527px;
+  }
+
+  &__user {
+    width: 180px;
+  }
 }

@@ -24,6 +24,22 @@ const tasks = [
     user: 'Iron man',
     status: 'done',
     priority: 'low'
+  },
+
+  {
+    type: 'bug',
+    name: 'Задача 4',
+    user: 'Iron man',
+    status: 'work',
+    priority: 'low'
+  },
+
+  {
+    type: 'bug',
+    name: 'Задача 4',
+    user: 'Iron man',
+    status: 'danger',
+    priority: 'low'
   }
 ]
 
@@ -38,6 +54,8 @@ const Board = () => {
             name={task.name}
             user={task.user}
             type={task.type}
+            status={task.status}
+            priority={task.priority}
           />
         ))}
       </div>
