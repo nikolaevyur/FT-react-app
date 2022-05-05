@@ -1,0 +1,10 @@
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 30px;
+
+  &__name {
+    width: 100%;
+  }
+}

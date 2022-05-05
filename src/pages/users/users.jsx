@@ -1,14 +1,14 @@
 import React from "react";
-import BoardTasks from "../../components/board-tasks/board-tasks";
+import BoardUsers from "../../components/board-users/board-users";
 import Header from "../../components/header/header";
 
-const Main = () => {
+const Users = () => {
   return (
     <>
       <Header />
-      <BoardTasks />
+      <BoardUsers />
     </>
   )
 }
 
-export default Main;
+export default Users;

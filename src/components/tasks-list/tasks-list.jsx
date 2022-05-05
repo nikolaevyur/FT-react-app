@@ -2,9 +2,9 @@ import React from "react";
 import Priority from "../task-priority/task-priority";
 import Status from "../task-status/task-status";
 import Type from "../task-type/task-type";
-import "./task.scss"
+import "./tasks-list.scss"
 
-const Task = (props) => {
+const TasksList = (props) => {
   return (
       <div className="task">
         <Type type={props.type}/>
@@ -17,4 +17,4 @@ const Task = (props) => {
   )
 }
 
-export default Task;
+export default TasksList;

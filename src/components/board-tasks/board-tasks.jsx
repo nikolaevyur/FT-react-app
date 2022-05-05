@@ -1,6 +1,6 @@
 import React from "react";
-import Task from "../task/task";
-import "./board.scss"
+import TasksList from "../tasks-list/tasks-list";
+import "./board-tasks.scss"
 
 const tasks = [
   {
@@ -43,14 +43,14 @@ const tasks = [
   }
 ]
 
-const Board = () => {
+const BoardTasks = () => {
   return (
     <div className="board">
       {/* Sorting */}
 
       <div className="task-wrapper">
         {tasks.map(task => (
-          <Task
+          <TasksList
             name={task.name}
             user={task.user}
             type={task.type}
@@ -64,4 +64,5 @@ const Board = () => {
     </div>
   )
 }
-export default Board;
+
+export default BoardTasks;
