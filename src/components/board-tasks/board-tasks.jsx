@@ -1,6 +1,6 @@
 import React from "react";
-import TasksList from "../tasks-list/tasks-list";
-import "./board-tasks.scss"
+import Task from "../task/task";
+import "./board-tasks.scss";
 
 const tasks = [
   {
@@ -50,7 +50,7 @@ const BoardTasks = () => {
 
       <div className="task-wrapper">
         {tasks.map(task => (
-          <TasksList
+          <Task
             name={task.name}
             user={task.user}
             type={task.type}

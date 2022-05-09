@@ -1,0 +1,29 @@
+@import "../../assets/styles/variables";
+
+.info {
+  display: flex;
+  height: 640px;
+  column-gap: 20px;
+}
+
+.first-column {
+  width: 330px;
+  border-right: 1px solid $grey;
+
+  &__info-task {
+
+  }
+}
+
+.second-column {
+  width: 420px;
+  border-right: 1px solid $grey;
+}
+
+.third-column {
+  width: 480px;
+}
+
+.column-title {
+  color: $ligth-grey;
+}
