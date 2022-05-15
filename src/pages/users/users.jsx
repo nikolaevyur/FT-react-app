@@ -2,11 +2,11 @@ import React from "react";
 import BoardUsers from "../../components/board-users/board-users";
 import Header from "../../components/header/header";
 
-const Users = () => {
+const Users = ({tasks, users}) => {
   return (
     <>
       <Header />
-      <BoardUsers />
+      <BoardUsers   tasks={tasks} users={users} />
     </>
   )
 }

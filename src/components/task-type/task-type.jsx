@@ -7,7 +7,7 @@ const Type = (props) => {
   return (
     <div className="task__type">
     {props.type === 'bug' ?
-      (<img src={typeBug} alt="Task" />) :
+      (<img src={typeBug} alt="Bug" />) :
       (<img src={typeTask} alt="Task" />)
     }</div>
   )

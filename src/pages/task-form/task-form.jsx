@@ -6,7 +6,7 @@ const TaskForm = () => {
   return (
     <>
       <Header />
-      <FormBoard />
+      <FormBoard/>
     </>
   )
 }

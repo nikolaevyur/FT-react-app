@@ -43,13 +43,12 @@ const tasks = [
   }
 ]
 
-const BoardUsers = () => {
+const BoardUsers = ({tasks, users}) => {
   return (
     <div className="board">
       <div className="users-wrapper">
-        {tasks.map(task => (
-          <UsersList
-            user={task.user}
+        {users.map(user => (
+          <UsersList name={user.username}
           />
         ))}
       </div>

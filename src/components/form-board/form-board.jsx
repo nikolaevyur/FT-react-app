@@ -1,10 +1,10 @@
 import React from "react";
 import InfoTask from "../info-task/info-task";
 
-const FormBoard = () => {
+const FormBoard = ({id}) => {
   return (
     <div className="board">
-      <InfoTask />
+      <InfoTask id={id} />
     </div>
   )
 }

@@ -7,17 +7,17 @@ import "./task-priority.scss"
 const Priority = (props) => {
 
   let priorityClass, text, srcImg;
-  if (props.priority === 'high') {
+  if (props.rank === 'high') {
     priorityClass = 'task__priority-high';
     text = 'Высокий';
     srcImg = high;
   }
-  if (props.priority === 'medium') {
+  if (props.rank === 'medium') {
     priorityClass = 'task__priority-medium';
     text = 'Средний';
     srcImg = medium;
   };
-  if (props.priority === 'low') {
+  if (props.rank === 'low') {
     priorityClass = 'task__priority-low';
     text = 'Низкий';
     srcImg = low;

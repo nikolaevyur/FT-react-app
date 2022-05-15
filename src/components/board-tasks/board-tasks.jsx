@@ -1,63 +1,27 @@
 import React from "react";
 import Task from "../task/task";
 import "./board-tasks.scss";
+import { observer } from "mobx-react-lite";
 
-const tasks = [
-  {
-    type: 'task',
-    name: 'Задача 1',
-    user: 'Juri',
-    status: 'open',
-    priority: 'high',
-  },
-  {
-    type: 'bug',
-    name: 'Задача 2',
-    user: 'Grut',
-    status: 'test',
-    priority: 'medium',
-  },
-
-  {
-    type: 'task',
-    name: 'Задача 3',
-    user: 'Iron man',
-    status: 'done',
-    priority: 'low'
-  },
-
-  {
-    type: 'bug',
-    name: 'Задача 4',
-    user: 'Iron man',
-    status: 'work',
-    priority: 'low'
-  },
-
-  {
-    type: 'bug',
-    name: 'Задача 4',
-    user: 'Iron man',
-    status: 'danger',
-    priority: 'low'
-  }
-]
-
-const BoardTasks = () => {
+const BoardTasks = ({tasks, users}) => {
   return (
     <div className="board">
       {/* Sorting */}
 
       <div className="task-wrapper">
-        {tasks.map(task => (
-          <Task
-            name={task.name}
-            user={task.user}
-            type={task.type}
-            status={task.status}
-            priority={task.priority}
-          />
+      {tasks.map(task => (          
+        <Task 
+          title={task.title}
+          type={task.type}
+          status={task.status}
+          rank={task.rank}
+          assignedId={task.assignedId}
+          id={task.id}
+          user={users}
+          
+          task={task}/>
         ))}
+
       </div>
       
       {/* Number of pages */}
