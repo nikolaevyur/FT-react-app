@@ -1,45 +1,71 @@
 import React, { useEffect } from "react";
 import "./info-task.scss";
-import { tasks, users, comments } from "../../store";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { getTask } from "../../api";
+import { getTask, addComment } from "../../api";
+import { getComments } from "../../api";
 import { rank } from "../../const";
 import moment from "moment";
-import Comments from "../comments/comments";
+import Comment from "../comment/comment";
+import { tasks, users, comments } from "../../store";
 
-const InfoTask = observer(() => {
+const InfoTask = observer((props) => {
   const { id } = useParams();
 
   const [task, setTask] = useState(null);
-
   useEffect(() => {
-    getTask(id).then(u => setTask(u));
+    getTask(id).then(t => setTask(t));
   }, [id]);
 
-  console.log(task)
+  const [comment, setComment] = useState(null);
+  useEffect(() => {
+    getComments(props.id).then(u => setComment(u));
+  }, [props.id]);
+
   if (task === null) {
-      return <p>Loading...</p>
-    }
+        return <p>Loading...</p>
+      }
 
-  const formatDateOfCreation = moment(task.dateOfCreation).format('DD.MM.YYYY HH:mm');
-  const formatDateOfUpdate = moment(task.dateOfUpdate).format('DD.MM.YYYY HH:mm');
+  // USERNAME
+  const assignedUser = props.user.find(u => u.id === task.assignedId),
+        author = props.user.find(u => u.id === task.userId);
 
-  const timeInMinutes = task.timeInMinutes;
-  const hours = Math.floor(timeInMinutes / 60);
-  const minutes = Math.floor(timeInMinutes) - (hours * 60);
+  // TIME
+  const formatDateOfCreation = moment(task.dateOfCreation).format('DD.MM.YYYY HH:mm'),
+        formatDateOfUpdate = moment(task.dateOfUpdate).format('DD.MM.YYYY HH:mm');
+
+  const timeInMinutes = task.timeInMinutes,
+        hours = Math.floor(timeInMinutes / 60),
+        minutes = Math.floor(timeInMinutes) - (hours * 60);
+
+  // ADD COMMENTS
+  // const [text, setText] = useState("");
+
+  // const handleSubmit = (evt) => {
+	// 	evt.preventDefault();
+	// 	comments.addComment({
+	// 		taskId : id,
+	// 		userId : "",
+	// 		text : text
+	// 	});
+	// 	evt.target.reset();
+	// }
+
+  // const handleText = (evt) => {
+  //   setComment(evt.target.value)
+  // }
 
   return (
     <div className="info">
       <div className="first-column">
         <div className="first-column__info-task">
           <p className="column-title">Исполнитель</p>
-          {task.assignedId}
+          {assignedUser === undefined ? "Loading..." : assignedUser.username}
         </div>
         <div className="first-column__info-task">
           <p className="column-title">Автор задачи</p>
-          {task.userId}
+          {author === undefined ? "Loading..." : assignedUser.username}
         </div>
         <div className="first-column__info-task">
           <p className="column-title">Тип запроса</p>
@@ -70,9 +96,31 @@ const InfoTask = observer(() => {
         </div>
       </div>
       <div className="third-column">
-        <Comments id={id}/>
+      {comment === null ? 
+        <p className="column-title">{`Комментарии (...)`}</p> : 
+        <p className="column-title">{`Комментарии (${comment.length})`}</p>}
+      {/* <form onSubmit={handleSubmit}>
+				<textarea 
+          placeholder="Текст комментария"
+          name="comment" 
+          onChange={handleText} 
+          required
+        >
+        </textarea>
+				<button type='submit'>Добавить комментарий</button>
+			</form> */}
+      {comment === null ? "Loading..." :
+       comment.map(c => (
+        <Comment 
+        key={c.id}
+        text={c.text}
+        user={props.user}
+        userId={c.userId}
+        />
+      )
+)}
       </div>
-    </div>
+      </div>
   )
 })
 

@@ -2,11 +2,11 @@ import React from "react";
 import FormBoard from "../../components/form-board/form-board";
 import Header from "../../components/header/header";
 
-const TaskForm = () => {
+const TaskForm = ({users}) => {
   return (
     <>
       <Header />
-      <FormBoard/>
+      <FormBoard users={users}/>
     </>
   )
 }

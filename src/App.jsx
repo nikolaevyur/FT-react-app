@@ -17,7 +17,7 @@ const App = observer(() => {
         <Route path={AppRoute.LOGIN} element={<Login />} />
         <Route path={AppRoute.MAIN} element={<Main tasks={tasks.data} users={users.data}/>} />
         <Route path={AppRoute.USERS} element={<Users tasks={tasks.data} users={users.data}/>} />
-        <Route path={AppRoute.FORM} element={<TaskForm />} />
+        <Route path={AppRoute.FORM} element={<TaskForm users={users.data}/>} />
         <Route path={AppRoute.PROFILE} element={<Profile />} />
       </Routes>
     </BrowserRouter>

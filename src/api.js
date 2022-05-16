@@ -35,6 +35,10 @@ export const getComments = (id) => {
     return request(`${url}/comments/${id}`)
   }
 
+export const addComment = (data) => {
+    return request(`${url}/comments/createOrEdit`, 'PUT', data)
+  }
+
 export const editStatus = (taskId, status) => {
     request(`${url}/tasks/${taskId}/status/${status}`, 'PATCH')
     .then(data => console.log(data))

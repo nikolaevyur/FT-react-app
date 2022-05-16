@@ -7,13 +7,13 @@ import "./task.scss";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
+import { tasks, users, comments } from "../../store";
 
 const Task = observer( (props) => {
   const { id } = props.task;
-  console.log(id)
-  let user = props.user.find(item => item.id === props.assignedId);
+  console.log(props.task)
 
-  console.log(user)
+  const user = props.user.find(u => u.id === props.assignedId)
 
   return (
     <div className="task">
@@ -21,7 +21,7 @@ const Task = observer( (props) => {
       <div className="task__name">
         <Link to={`${AppRoute.TASK}/${id}`}>{props.title}</Link>
         </div>
-      {/* <div className="task__user">{user.data.username}</div> */}
+      <div className="task__user">{user === undefined ? "Loading..." : user.username}</div>
       <Status status={props.status}/>
       <Priority  rank={props.rank}/>
       <TaskBurger />

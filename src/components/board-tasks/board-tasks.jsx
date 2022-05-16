@@ -10,7 +10,9 @@ const BoardTasks = ({tasks, users}) => {
 
       <div className="task-wrapper">
       {tasks.map(task => (          
-        <Task 
+        <Task
+          key={task.id}
+          
           title={task.title}
           type={task.type}
           status={task.status}

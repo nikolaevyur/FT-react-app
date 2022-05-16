@@ -1,5 +1,5 @@
 import { makeAutoObservable, onBecomeObserved } from 'mobx';
-import { getTasks, getUsers, addTask, getTask, getComments } from '../api'
+import { getTasks, getUsers, addTask, getTask, getComments, addComment } from '../api'
 
 class TaskStore {
     id;
@@ -123,6 +123,10 @@ class CommentsStore {
 		const response = yield getComments(this.id);
 		this.data = response.data;
 	}
+
+    *addComment(data) {
+        yield addComment(data)
+      }
 // class CommentStore {
 //     id = '';
 //     taskId = '';
