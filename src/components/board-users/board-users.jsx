@@ -1,58 +1,38 @@
-import React from "react";
-import UsersList from "../users-list/users-list";
+import React, {useState, useEffect} from "react";
+import User from "../user/user";
 import "./board-users.scss"
+import { getUsers} from "../../api";
+import Pagination from "../pagination/pagination";
 
-const tasks = [
-  {
-    type: 'task',
-    name: 'Задача 1',
-    user: 'Juri',
-    status: 'open',
-    priority: 'high',
-  },
-  {
-    type: 'bug',
-    name: 'Задача 2',
-    user: 'Grut',
-    status: 'test',
-    priority: 'medium',
-  },
+const BoardUsers = () => {
+  const [users, setUsers] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage] = useState(10);
 
-  {
-    type: 'task',
-    name: 'Задача 3',
-    user: 'Iron man',
-    status: 'done',
-    priority: 'low'
-  },
+  useEffect(() => {
+    getUsers().then(u => setUsers(u));
+  }, []);
 
-  {
-    type: 'bug',
-    name: 'Задача 4',
-    user: 'Iron man',
-    status: 'work',
-    priority: 'low'
-  },
+  if (!users) return null;
+// console.log(setUsersList)
+  // const lastUserIndex = currentPage *usersPerPage
+  // const firstUserIndex = lastUserIndex - usersPerPage
+  // const currentUser = users.slice(firstUserIndex, lastUserIndex)
 
-  {
-    type: 'bug',
-    name: 'Задача 4',
-    user: 'Iron man',
-    status: 'danger',
-    priority: 'low'
-  }
-]
-
-const BoardUsers = ({tasks, users}) => {
   return (
     <div className="board">
       <div className="users-wrapper">
-        {users.map(user => (
-          <UsersList name={user.username}
+        {users.data.data.map(user => (
+          <User 
+          name={user.username}
+          user={user}
           />
         ))}
       </div>
-      {/* Number of pages */}
+     {/* <Pagination 
+      usersPerPage={usersPerPage}
+      totalUsers={users.length}
+     /> */}
     </div>
   )
 }

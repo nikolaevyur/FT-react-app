@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./info-task.scss";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import { getTask, addComment } from "../../api";
 import { getComments } from "../../api";
 import { rank } from "../../const";
@@ -14,28 +13,29 @@ const InfoTask = observer((props) => {
   const { id } = useParams();
 
   const [task, setTask] = useState(null);
+  const [comment, setComment] = useState(null);
+
   useEffect(() => {
     getTask(id).then(t => setTask(t));
   }, [id]);
 
-  const [comment, setComment] = useState(null);
   useEffect(() => {
-    getComments(props.id).then(u => setComment(u));
-  }, [props.id]);
+    getComments(id).then(u => setComment(u));
+  }, [id]);
 
   if (task === null) {
         return <p>Loading...</p>
       }
 
   // USERNAME
-  const assignedUser = props.user.find(u => u.id === task.assignedId),
-        author = props.user.find(u => u.id === task.userId);
+  const assignedUser = props.user.find(u => u.id === task.data.assignedId),
+        author = props.user.find(u => u.id === task.data.userId);
 
   // TIME
-  const formatDateOfCreation = moment(task.dateOfCreation).format('DD.MM.YYYY HH:mm'),
-        formatDateOfUpdate = moment(task.dateOfUpdate).format('DD.MM.YYYY HH:mm');
+  const formatDateOfCreation = moment(task.data.dateOfCreation).format('DD.MM.YYYY HH:mm'),
+        formatDateOfUpdate = moment(task.data.dateOfUpdate).format('DD.MM.YYYY HH:mm');
 
-  const timeInMinutes = task.timeInMinutes,
+  const timeInMinutes = task.data.timeInMinutes,
         hours = Math.floor(timeInMinutes / 60),
         minutes = Math.floor(timeInMinutes) - (hours * 60);
 
@@ -73,7 +73,7 @@ const InfoTask = observer((props) => {
         </div>
         <div className="first-column__info-task">
           <p className="column-title">Приоритет</p>
-          {rank[task.rank]}
+          {rank[task.data.rank]}
         </div>
         <div className="first-column__info-task">
           <p className="column-title">Дата создания</p>
@@ -92,13 +92,13 @@ const InfoTask = observer((props) => {
       <div className="second-column">
         <div className="second-column__description">
           <p className="column-title">Описание</p>
-          {task.description}
+          {task.data.description}
         </div>
       </div>
       <div className="third-column">
       {comment === null ? 
         <p className="column-title">{`Комментарии (...)`}</p> : 
-        <p className="column-title">{`Комментарии (${comment.length})`}</p>}
+        <p className="column-title">{`Комментарии (${comment.data.length})`}</p>}
       {/* <form onSubmit={handleSubmit}>
 				<textarea 
           placeholder="Текст комментария"
@@ -110,7 +110,7 @@ const InfoTask = observer((props) => {
 				<button type='submit'>Добавить комментарий</button>
 			</form> */}
       {comment === null ? "Loading..." :
-       comment.map(c => (
+       comment.data.map(c => (
         <Comment 
         key={c.id}
         text={c.text}

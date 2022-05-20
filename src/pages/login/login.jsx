@@ -2,11 +2,11 @@ import React from "react";
 import Header from "../../components/header/header";
 import Authorization from "../../components/authorization/authorization"
 
-const Login = () => {
+const Login = ({login}) => {
   return (
     <>
       <Header />
-      <Authorization />
+      <Authorization login={login} />
     </>
   )
 }

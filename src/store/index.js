@@ -1,132 +1,182 @@
-import { makeAutoObservable, onBecomeObserved } from 'mobx';
-import { getTasks, getUsers, addTask, getTask, getComments, addComment } from '../api'
+// import { makeAutoObservable, onBecomeObserved } from 'mobx';
+// import { getTasks, getUsers, addTask, getTask, getComments, addComment, login } from '../api'
+// import { api } from '../api' 
 
-class TaskStore {
-    id;
-    userId = '';
-    assignedId = '';
-    title = '';
-    description = '';
-    type = 'task';
-    dateOfCreation = new Date();
-    dateOfUpdate = new Date();
-    timeInMinutes = 0;
-    status = 'opened';
-    rank = 'low'
+// class TasksStore {
+//     tasks = [];
 
-    constructor({ id, userId, assignedId, title, description, type, dateOfCreation, dateOfUpdate, timeInMinutes, status, rank }) {
-        makeAutoObservable(this, {}, {
-            autoBind: true
-        });
+//     // filter = {};
+//     // page = 0;
+//     // limit = 0;
 
-        this.id = id;
-        this.userId = userId;
-        this.assignedId = assignedId;
-        this.title = title;
-        this.description = description;
-        this.type = type;
-        this.dateOfCreation = dateOfCreation;
-        this.dateOfUpdate = dateOfUpdate;
-        this.timeInMinutes = timeInMinutes;
-        this.status = status;
-        this.rank = rank;
-    }
-}
+//     constructor() {
+//         makeAutoObservable(this, {}, {
+//             autoBind: true,
+//         });
+//     }
 
-class TasksStore {
-    data = [];
+//     fetchAsyncTasks() {
+//         return api.getAsyncTasks()
+//             .then((data) => {
+//                 this.tasks = data.data;
+//             })
+//     }
+   
+// }
 
-    constructor() {
-        makeAutoObservable(this, {}, {
-            autoBind: true,
-        });
+// export const tasks = new TasksStore();
+// console.log(tasks)
+// class UsersStore {
+//     users = []
 
-        onBecomeObserved(this, 'data', this.fetch);
-    }
+//     constructor() {
+//         makeAutoObservable(this, {}, {
+//             autoBind: true,
+//         });
+//     }
+   
+//     fetchAsyncUsers() {
+//         return getUsers()
+//             .then((response) => {
+//                 this.users = response.data;
+//             })
+//     }
+// }
 
-    *fetch() {
-        const response = yield getTasks();
-        this.data = response.data.map(event => new TaskStore(event));
-    }
+// export const users = new UsersStore();
+// class TaskStore {
+//     id;
+//     userId = '';
+//     assignedId = '';
+//     title = '';
+//     description = '';
+//     type = 'task';
+//     dateOfCreation = new Date();
+//     dateOfUpdate = new Date();
+//     timeInMinutes = 0;
+//     status = 'opened';
+//     rank = 'low'
 
-    *addTask(data) {
-        yield addTask(data)
-        yield this.fetch();
-    }
+//     constructor({ id, userId, assignedId, title, description, type, dateOfCreation, dateOfUpdate, timeInMinutes, status, rank }) {
+//         makeAutoObservable(this, {}, {
+//             autoBind: true
+//         });
 
-    *getTask() {
-		yield getTask(this.id)
-        yield this.fetch();
-	}
-}
+//         this.id = id;
+//         this.userId = userId;
+//         this.assignedId = assignedId;
+//         this.title = title;
+//         this.description = description;
+//         this.type = type;
+//         this.dateOfCreation = dateOfCreation;
+//         this.dateOfUpdate = dateOfUpdate;
+//         this.timeInMinutes = timeInMinutes;
+//         this.status = status;
+//         this.rank = rank;
+//     }
+// }
 
-export const tasks = new TasksStore();
+// class TasksStore {
+//     data = [];
 
-class UserStore {
-    id;
-    username = '';
-    login = '';
-    about = '';
-    photoUrl = ''
+//     constructor() {
+//         makeAutoObservable(this, {}, {
+//             autoBind: true,
+//         });
 
-    constructor({ id, username, login, about, photoUrl}) {
-        makeAutoObservable(this, {}, {
-            autoBind: true
-        });
+//         onBecomeObserved(this, 'data', this.fetch);
+//     }
 
-        this.id = id;
-        this.username = username;
-        this.login = login;
-        this.about = about;
-        this.photoUrl = photoUrl;
-    }
-}
+//     *fetch() {
+//         const response = yield getTasks();
+//         this.data = response.data.map(event => new TaskStore(event));
+//     }
 
-class UsersStore {
-    data = [];
+//     *addTask(data) {
+//         yield addTask(data)
+//         yield this.fetch();
+//     }
 
-    constructor() {
-        makeAutoObservable(this, {}, {
-            autoBind: true,
-        });
+//     *getTask() {
+// 		yield getTask(this.id)
+//         yield this.fetch();
+// 	}
+// }
 
-        onBecomeObserved(this, 'data', this.fetch);
-    }
+// export const tasks = new TasksStore();
 
-    *fetch() {
-        const response = yield getUsers();
-        this.data = response.map(event => new UserStore(event));
-    }
-}
+// class UserStore {
+//     id;
+//     username = '';
+//     login = '';
+//     about = '';
+//     photoUrl = ''
 
-export const users = new UsersStore();
+//     constructor({ id, username, login, about, photoUrl}) {
+//         makeAutoObservable(this, {}, {
+//             autoBind: true
+//         });
 
-// COMMENTS
-class CommentsStore {
-	data = [];
-	id = '';
-    taskId = '';
-    userId = '';
-    text = '';
-    dateOfCreation = new Date();
-    dateOfUpdate = new Date();
+//         this.id = id;
+//         this.username = username;
+//         this.login = login;
+//         this.about = about;
+//         this.photoUrl = photoUrl;
+//     }
+// }
 
-	constructor() {
-		makeAutoObservable(this, {}, {
-		autoBind: true
-		})
+// class UsersStore {
+//     data = [];
+//     profile ={}
 
-		onBecomeObserved(this, 'data', this.getComments);
-	}
+//     constructor() {
+//         makeAutoObservable(this, {}, {
+//             autoBind: true,
+//         });
 
-	*getComments() {
-		const response = yield getComments(this.id);
-		this.data = response.data;
-	}
+//         onBecomeObserved(this, 'data', this.fetch);
+//     }
 
-    *addComment(data) {
-        yield addComment(data)
-      }
+//     *fetch() {
+//         const response = yield getUsers();
+//         this.data = response.map(event => new UserStore(event));
+//     }
+
+//     *login(profile) {
+//         const response = yield login(profile)
+//         this.profile  = response;
+//     }
+//     }
+    
+
+// export const users = new UsersStore();
+
+// // COMMENTS
+// class CommentsStore {
+// 	data = [];
+// 	id = '';
+//     taskId = '';
+//     userId = '';
+//     text = '';
+//     dateOfCreation = new Date();
+//     dateOfUpdate = new Date();
+
+// 	constructor() {
+// 		makeAutoObservable(this, {}, {
+// 		autoBind: true
+// 		})
+
+// 		onBecomeObserved(this, 'data', this.getComments);
+// 	}
+
+// 	*getComments() {
+// 		const response = yield getComments(this.id);
+// 		this.data = response.data;
+// 	}
+
+//     *addComment(data) {
+//         yield addComment(data)
+//       }
 // class CommentStore {
 //     id = '';
 //     taskId = '';
@@ -174,5 +224,5 @@ class CommentsStore {
 	// 	yield deleteComment(id);
 	// 	yield this.getComments();
 	// }
-}
-export const comments = new CommentsStore();
+// }
+// export const comments = new CommentsStore();

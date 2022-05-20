@@ -4,6 +4,14 @@
   &__info {
     width: 320px;
   }
+  
+
+  &__photo {
+    width: 186px;
+    height: 186px;
+    border: solid 1px #7B61FF;
+    border-radius: 50%;
+  }
 
   &__tasks {
     box-shadow: inset 0px 0px 2px 1px #B5B5B5;

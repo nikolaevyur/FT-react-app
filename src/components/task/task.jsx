@@ -1,18 +1,16 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import TaskBurger from "../task-burger/task-burger";
 import Priority from "../task-priority/task-priority";
 import Status from "../task-status/task-status";
 import Type from "../task-type/task-type";
 import "./task.scss";
-import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
-import { tasks, users, comments } from "../../store";
+import { getUsers } from "../../api";
+// import { tasks, users, comments } from "../../store";
 
-const Task = observer( (props) => {
+const Task = (props) => {
   const { id } = props.task;
-  console.log(props.task)
-
   const user = props.user.find(u => u.id === props.assignedId)
 
   return (
@@ -27,6 +25,6 @@ const Task = observer( (props) => {
       <TaskBurger />
     </div>
   )
-})
+}
 
 export default Task;

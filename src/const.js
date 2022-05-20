@@ -4,7 +4,8 @@ export const AppRoute = {
   USERS: '/users',
   TASK: '/task',
   FORM: '/task/:id',
-  PROFILE: '/profile'
+  PROFILE: '/profile',
+  PROFILEFORM: "/profile/:id"
   // ADD: '/event',
   // EVENT: '/event/:id?',
 };
