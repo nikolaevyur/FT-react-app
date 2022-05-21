@@ -28,6 +28,7 @@ const BoardTasks = () => {
       {/* Sorting */}
 
       <div className="task-wrapper">
+      {tasks.data.data.length === 0 && <p>Задач нет, нажмите кнопку "Добавить"</p>}
       {tasks.data.data.map(task => (          
         <Task
           key={task.id}

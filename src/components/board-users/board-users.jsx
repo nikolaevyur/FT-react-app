@@ -6,18 +6,18 @@ import Pagination from "../pagination/pagination";
 
 const BoardUsers = () => {
   const [users, setUsers] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage] = useState(10);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [usersPerPage] = useState(10);
 
   useEffect(() => {
     getUsers().then(u => setUsers(u));
   }, []);
 
   if (!users) return null;
-// console.log(setUsersList)
+
   // const lastUserIndex = currentPage *usersPerPage
   // const firstUserIndex = lastUserIndex - usersPerPage
-  // const currentUser = users.slice(firstUserIndex, lastUserIndex)
+  // const currentUser = users.data.data.slice(firstUserIndex, lastUserIndex)
 
   return (
     <div className="board">
@@ -26,12 +26,13 @@ const BoardUsers = () => {
           <User 
           name={user.username}
           user={user}
+          users={users.data.data}
           />
         ))}
       </div>
      {/* <Pagination 
       usersPerPage={usersPerPage}
-      totalUsers={users.length}
+      totalUsers={users.data}
      /> */}
     </div>
   )

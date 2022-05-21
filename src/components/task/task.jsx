@@ -7,11 +7,10 @@ import "./task.scss";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
 import { getUsers } from "../../api";
-// import { tasks, users, comments } from "../../store";
 
 const Task = (props) => {
   const { id } = props.task;
-  const user = props.user.find(u => u.id === props.assignedId)
+  const user = window.location.pathname === AppRoute.MAIN && props.user.find(u => u.id === props.assignedId)
 
   return (
     <div className="task">
@@ -19,7 +18,8 @@ const Task = (props) => {
       <div className="task__name">
         <Link to={`${AppRoute.TASK}/${id}`}>{props.title}</Link>
         </div>
-      <div className="task__user">{user === undefined ? "Loading..." : user.username}</div>
+        {window.location.pathname === AppRoute.MAIN &&
+        <div className="task__user">{user === undefined ? "Loading..." : user.username}</div>}
       <Status status={props.status}/>
       <Priority  rank={props.rank}/>
       <TaskBurger />
