@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AppRoute } from "../../const";
 import "./task-burger.scss"
 
 const TaskBurger = (props) => {
@@ -12,7 +13,7 @@ const TaskBurger = (props) => {
       </svg>
       <div className="task__dropdown">
       <Link
-          to={""}
+          to={`${AppRoute.ADD}/${props.id}`}
           className="task__link"
         >Редактировать
         </Link>

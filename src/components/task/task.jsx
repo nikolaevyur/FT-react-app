@@ -11,7 +11,7 @@ import { getUsers } from "../../api";
 const Task = (props) => {
   const { id } = props.task;
   const user = window.location.pathname === AppRoute.MAIN && props.user.find(u => u.id === props.assignedId)
-
+  
   return (
     <div className="task">
       <Type type={props.type}/>
@@ -22,7 +22,7 @@ const Task = (props) => {
         <div className="task__user">{user === undefined ? "Loading..." : user.username}</div>}
       <Status status={props.status}/>
       <Priority  rank={props.rank}/>
-      <TaskBurger />
+      <TaskBurger id={id} />
     </div>
   )
 }

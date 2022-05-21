@@ -7,10 +7,10 @@ import Users from "./pages/users/users";
 import Main from "./pages/main/main";
 import TaskForm from "./pages/task-form/task-form";
 import Profile from "./pages/profile/profile";
-import { observer } from "mobx-react-lite";
-// import { tasks, users } from "./store";
+import TaskEdit from "./pages/task-edit/task-edit";
 
-const App = observer(() => {
+
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,10 +18,12 @@ const App = observer(() => {
         <Route path={AppRoute.MAIN} element={<Main />} />
         <Route path={AppRoute.USERS} element={<Users />} />
         <Route path={AppRoute.FORM} element={<TaskForm />} />
-        <Route path={AppRoute.PROFILEFORM} element={<Profile />} />
+        <Route path={AppRoute.PROFILE_FORM} element={<Profile />} />
+        <Route path={AppRoute.ADD} element={<TaskEdit />} />
+        <Route path={AppRoute.EDIT} element={<TaskEdit />} />
       </Routes>
     </BrowserRouter>
   )
-})
+}
 
 export default App;

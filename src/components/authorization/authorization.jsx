@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { users } from '../../store';
+// import { users } from '../../store';
 import "../../components/authorization/authorization.scss"
 
 const Authorization = observer((props) => {
@@ -14,7 +14,7 @@ const Authorization = observer((props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    users.login(form)
+    // users.login(form)
   }
 
   const handleForm = (evt) => {

@@ -5,9 +5,9 @@ export const AppRoute = {
   TASK: '/task',
   FORM: '/task/:id',
   PROFILE: '/profile',
-  PROFILEFORM: "/profile/:id"
-  // ADD: '/event',
-  // EVENT: '/event/:id?',
+  PROFILE_FORM: "/profile/:id",
+  ADD: '/edit',
+  EDIT: '/edit/:id',
 };
 
 export const rank = {
