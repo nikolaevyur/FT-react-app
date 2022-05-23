@@ -3,12 +3,12 @@ import HeaderMenu from "../header-menu/header-menu";
 import HeaderUser from "../header-user/header-user";
 import "./header.scss"
 
-const Header = () => {
+const Header = ({login}) => {
   return (
     <div className="header">
       <div className="header__logo"></div>
         <HeaderMenu />
-        <HeaderUser />
+        <HeaderUser login={login}/>
     </div>
   )
 }

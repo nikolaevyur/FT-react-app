@@ -1,7 +1,8 @@
 @import "../../assets/styles/variables";
 
 .header {
-  &__user{
+
+  &__user {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -32,17 +33,33 @@
     border-radius: 5px;
     padding: 3px;
     z-index: 1;
-  } 
+  }
 
   &__link {
     text-decoration: none;
     font-size: 12px;
     line-height: 14px;
     color: $dark-grey;
-    }
+    width: 100%;
+    border-radius: 3px;
+  }
 
-  .link-out{
+  &__link:hover{
+    background-color: #7B61FF;
+    color: #FFFFFF;
+  }
+
+  .link-out {
     color: $red;
+  }
+
+  .link-out:hover{
+    background-color: red;
+    color: #FFFFFF;
+  }
+
+  .login-false {
+    display: none;
   }
 }
 

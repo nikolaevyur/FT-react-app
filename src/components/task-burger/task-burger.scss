@@ -35,11 +35,25 @@
     font-size: 12px;
     line-height: 14px;
     color: $dark-grey;
+    width: 100%;
+    border-radius: 3px;
     }
+  
+  &__link:hover{
+    background-color: #7B61FF;
+    color: #FFFFFF;
+  }
 
   .link-out{
     color: $red;
   }
+
+  .link-out:hover{
+    background-color: red;
+    color: #FFFFFF;
+  }
+
+
 }
 
 .dropdown {

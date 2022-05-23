@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-// import { users } from '../../store';
 import "../../components/authorization/authorization.scss"
+import { AppRoute } from '../../const';
 
-const Authorization = observer((props) => {
+const Authorization = observer(({ login }) => {
 
   const [form, setForm] = useState(
     {
@@ -11,10 +11,17 @@ const Authorization = observer((props) => {
       password: ""
     }
   )
-
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    // users.login(form)
+    await login.getLogin(form)
+    if (login.loginUser.id) {
+      localStorage.setItem("login", true);
+      localStorage.setItem("loginUser", JSON.stringify({...login.loginUser}))
+      window.location.assign(AppRoute.MAIN)
+    }
+    else {
+      alert("Ошибка! Пропробуйте снова.")
+    }
   }
 
   const handleForm = (evt) => {
@@ -22,7 +29,7 @@ const Authorization = observer((props) => {
     setForm({ ...form, [name]: value })
   }
 
-  console.log(props.login.profile.id)
+  // console.log(login.loginUser.username)
 
   return (
     <div className="login">

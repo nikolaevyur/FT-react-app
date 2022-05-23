@@ -28,6 +28,10 @@ export const getUser = (id) => {
 	return axios.get(`${url}/users/${id}`)
 }
 
+export const getLogin = (data) => {
+    return axios.post(`${url}/users/login`, data);
+  }
+
 // COMMENTS
 export const getComments = (id) => {
 	return axios.get(`${url}/comments/${id}`)

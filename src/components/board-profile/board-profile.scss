@@ -5,6 +5,9 @@
     width: 320px;
   }
   
+  &__title{
+    color: #CCCCCC;
+  }
 
   &__photo {
     width: 186px;
@@ -17,10 +20,12 @@
     box-shadow: inset 0px 0px 2px 1px #B5B5B5;
     border-radius: 3px;
     width: 900px;
+    height: 100%;
   }
 
   &__no-tasks {
     font-size: 20px;
     text-align: center;
+    color: #CCCCCC;
   }
 }
