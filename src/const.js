@@ -1,6 +1,6 @@
 export const AppRoute = {
-  MAIN: '/',
-  LOGIN: '/login',
+  MAIN: '/tasks',
+  LOGIN: '/',
   USERS: '/users',
   TASK: '/task',
   FORM: '/task/:id',

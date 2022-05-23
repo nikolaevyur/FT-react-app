@@ -1,0 +1,94 @@
+.task{
+    &__form{
+      display: flex;
+      justify-content: start;
+      align-self: flex-start;
+      height: 100%;
+
+      .column__first{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        padding: 0 20px;
+        
+        select{
+          padding: 2px;
+          height: 30px;
+          border: 1px solid #7B61FF;
+          box-shadow: inset 0px 0px 2px 1px #B5B5B5;
+          border-radius: 3px;
+          margin: 5px 0 20px 0;
+          
+        }
+        
+        input{
+          height: 24px;
+          border: 1px solid #7B61FF;
+          box-shadow: inset 0px 0px 2px 1px #B5B5B5;
+          border-radius: 3px;
+          padding: 5px;
+          margin: 5px 0 20px 0;
+          resize: none;
+        }
+      }
+
+      .column__second{
+        width: 400px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        border-left: #B5B5B5 solid 2px;
+
+        textarea{
+          height: 100%;
+          width: 100%;
+          border: 1px solid #7B61FF;
+          box-shadow: inset 0px 0px 2px 1px #B5B5B5;
+          border-radius: 3px;
+          padding: 5px;
+          margin: 5px 0 0 0;
+          resize: none;
+        }
+
+        fieldset{
+          border: none;
+          padding: 0;
+        }
+
+        .task__field--description{
+          height: 85%;
+        }
+
+        .task__input--title{
+          height: 16px;
+        }
+    }
+  }
+}
+
+// .board__form{
+
+
+//   &-data{
+//     width: 26%;
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     padding: 0 20px;
+//   }
+//   &-info{
+//     width: 35%;
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     padding: 0 20px;
+//     border-right: #B5B5B5 solid 2px;
+//     border-left: #B5B5B5 solid 2px;
+//   }
+//   &-comments{
+//     width: 40%;
+//     height: 100%;
+//     padding: 0 20px;
+//   }
+// }

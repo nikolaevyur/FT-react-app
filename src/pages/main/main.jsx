@@ -3,11 +3,10 @@ import BoardTasks from "../../components/board-tasks/board-tasks";
 import Header from "../../components/header/header";
 import { observer } from "mobx-react-lite";
 
-const Main = observer(({ login }) => {
-  console.log(login)
+const Main = observer(() => {
   return (
     <>
-      <Header login={login} />
+      <Header />
       <BoardTasks />
     </>
   )

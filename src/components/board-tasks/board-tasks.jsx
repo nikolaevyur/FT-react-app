@@ -2,15 +2,22 @@ import React, {useState, useEffect} from "react";
 import Task from "../task/task";
 import "./board-tasks.scss";
 import { observer } from "mobx-react-lite";
-import { getTasks, getUsers } from "../../api";
+import { getTasks, getTasksPag, getUsers } from "../../api";
+import Pagination from "../pagination/pagination";
 
 const BoardTasks = () => {
   const [users, setUsers] = useState(null);
   const [tasks, setTasks] = useState(null);
 
   useEffect(() => {
-    getTasks().then(t => setTasks(t));
+    const page = 0
+    getTasksPag(page).then(t => setTasks(t));
   }, []);
+
+      // тут все работало
+  // useEffect(() => {
+  //   getTasks().then(t => setTasks(t));
+  // }, []);
 
   useEffect(() => {
     getUsers().then(u => setUsers(u));
@@ -43,8 +50,7 @@ const BoardTasks = () => {
         ))}
 
       </div>
-      
-      {/* Number of pages */}
+      <Pagination object={tasks.data}/>
     </div>
   )
 }

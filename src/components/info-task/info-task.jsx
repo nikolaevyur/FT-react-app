@@ -8,6 +8,7 @@ import { rank } from "../../const";
 import moment from "moment";
 import Comment from "../comment/comment";
 import { tasks, users, comments } from "../../store";
+import CommentAdd from "../comment-add/comment-add";
 
 const InfoTask = observer((props) => {
   const { id } = useParams();
@@ -65,7 +66,7 @@ const InfoTask = observer((props) => {
         </div>
         <div className="first-column__info-task">
           <p className="column-title">Автор задачи</p>
-          {author === undefined ? "Loading..." : assignedUser.username}
+          {author === undefined ? "Loading..." : author.username}
         </div>
         <div className="first-column__info-task">
           <p className="column-title">Тип запроса</p>
@@ -99,16 +100,7 @@ const InfoTask = observer((props) => {
       {comment === null ? 
         <p className="column-title">{`Комментарии (...)`}</p> : 
         <p className="column-title">{`Комментарии (${comment.data.length})`}</p>}
-      {/* <form onSubmit={handleSubmit}>
-				<textarea 
-          placeholder="Текст комментария"
-          name="comment" 
-          onChange={handleText} 
-          required
-        >
-        </textarea>
-				<button type='submit'>Добавить комментарий</button>
-			</form> */}
+      <CommentAdd taskId={task.data.id}/>
       {comment === null ? "Loading..." :
        comment.data.map(c => (
         <Comment 
@@ -116,6 +108,7 @@ const InfoTask = observer((props) => {
         text={c.text}
         user={props.user}
         userId={c.userId}
+        dateOfCreation={c.dateOfCreation}
         />
       )
 )}

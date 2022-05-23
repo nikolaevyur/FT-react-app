@@ -6,7 +6,7 @@ import "./header-menu.scss"
 const HeaderMenu = () => {
   return (
     <nav className={`header__menu ${window.location.pathname === AppRoute.LOGIN && "login-false"}`}>
-     <Link to="/"
+     <Link to={AppRoute.MAIN}
             className={
               `header__menu-link 
             ${window.location.pathname === AppRoute.MAIN && 'header__menu-active'}`
@@ -14,7 +14,7 @@ const HeaderMenu = () => {
           >Задачи
           </Link>
 
-          <Link to="/users"
+          <Link to={AppRoute.USERS}
             className={
               `header__menu-link 
             ${window.location.pathname === AppRoute.USERS && 'header__menu-active'}`

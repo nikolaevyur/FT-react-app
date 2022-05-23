@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
+import { data, getTasks, getTasksPag } from "../../api";
 
-const Pagination = ({usersPerPage, totalUsers}) => {
+const Pagination = ({object}) => {
   const pageNumbers = []
+ 
+  const lengthObject = object.total;
 
-  for (let i = 1; 1 <= (totalUsers.total / usersPerPage); i++) {
-    pageNumbers.push(i)
+  console.log(lengthObject)
+
+  const page = 0;
+
+  const startPage = () => {
+    // object.page = 0;
+    getTasksPag(page + 2);
   }
-  console.log(totalUsers.total)
+
   return (
-    <div>
-      <ul className="pagination">
-        {
-          pageNumbers.map(number => (
-            <li className="page-item" key={number}>
-              <Link to="#">{number}</Link>  
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <div className="pag_buttons">
+
+    <button
+      className='btn default'
+      onClick={startPage}
+      // disabled={ page == 0}
+    > {"Начало"} </button>
+
+  </div>
+
+
   )
-}
+};
 
 export default Pagination;

@@ -1,20 +1,19 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "../src/pages/login/login";
-import './App.scss'
-import { AppRoute } from "./const";
-import Users from "./pages/users/users";
+import { observer } from "mobx-react-lite";
+
 import Main from "./pages/main/main";
+import Users from "./pages/users/users";
 import TaskForm from "./pages/task-form/task-form";
 import Profile from "./pages/profile/profile";
 import TaskEdit from "./pages/task-edit/task-edit";
-import { observer } from "mobx-react-lite";
+import Login from "../src/pages/login/login";
 import { login } from "./store";
+import { AppRoute } from "./const";
 
-
+import './App.scss';
 
 const App = observer(() => {
-
   const checkLogin = localStorage.getItem("login");
 
   return (
@@ -23,8 +22,8 @@ const App = observer(() => {
         {checkLogin
           ?
           <>
-            <Route element={<Navigate to={AppRoute.MAIN} replace />} />
-            <Route path={AppRoute.MAIN} element={<Main login={login} />} />
+            <Route element={<Navigate path="*" to={AppRoute.MAIN} replace />} />
+            <Route path={AppRoute.MAIN} element={<Main />} />
             <Route path={AppRoute.USERS} element={<Users />} />
             <Route path={AppRoute.FORM} element={<TaskForm />} />
             <Route path={AppRoute.PROFILE_FORM} element={<Profile />} />
@@ -34,7 +33,7 @@ const App = observer(() => {
           :
           <>
             <Route path={AppRoute.LOGIN} element={<Login login={login} />} />
-            <Route element={<Navigate to={AppRoute.LOGIN} replace />} />
+            <Route element={<Navigate path='*' to={AppRoute.LOGIN} replace />} />
           </>
         }
       </Routes>
