@@ -3,17 +3,22 @@ import User from "../user/user";
 import "./board-users.scss"
 import { getUsers} from "../../api";
 import Pagination from "../pagination/pagination";
+import { usersFilter } from "../../store";
+import { observer } from "mobx-react-lite";
 
-const BoardUsers = () => {
-  const [users, setUsers] = useState(null);
+const BoardUsers = observer(() => {
+  const users = usersFilter.data;
+  const usersTotal = usersFilter
+  console.log(usersTotal)
+  // const [users, setUsers] = useState(null);
   // const [currentPage, setCurrentPage] = useState(1);
   // const [usersPerPage] = useState(10);
 
-  useEffect(() => {
-    getUsers().then(u => setUsers(u));
-  }, []);
+  // useEffect(() => {
+  //   getUsersPag().then(u => setUsers(u));
+  // }, []);
 
-  if (!users) return null;
+  // if (!users) return null;
 
   // const lastUserIndex = currentPage *usersPerPage
   // const firstUserIndex = lastUserIndex - usersPerPage
@@ -22,19 +27,19 @@ const BoardUsers = () => {
   return (
     <div className="board">
       <div className="users-wrapper">
-        {users.data.data.map(user => (
+        {users.map(user => (
           <User 
           name={user.username}
           user={user}
-          users={users.data.data}
+          users={users}
           />
         ))}
       </div>
-     {/* <Pagination 
-      usersPerPage={usersPerPage}
-      totalUsers={users.data}
-     /> */}
+     <Pagination 
+    item={usersTotal}
+     />
     </div>
   )
-}
+})
+
 export default BoardUsers;

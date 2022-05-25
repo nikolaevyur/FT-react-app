@@ -1,18 +1,25 @@
 import React, {useState, useEffect} from "react";
 import Task from "../task/task";
+import Filters from "../filters/filters"
 import "./board-tasks.scss";
 import { observer } from "mobx-react-lite";
 import { getTasks, getTasksPag, getUsers } from "../../api";
+import { tasksFilter } from '../../store';
 import Pagination from "../pagination/pagination";
 
-const BoardTasks = () => {
+const BoardTasks = observer(() => {
   const [users, setUsers] = useState(null);
-  const [tasks, setTasks] = useState(null);
+  const tasks = tasksFilter.filtredData;
+  const tasksTotal = tasksFilter
 
-  useEffect(() => {
-    const page = 0
-    getTasksPag(page).then(t => setTasks(t));
-  }, []);
+
+  // console.log(tasks)
+
+  // useEffect(() => {
+  //   const page = 1
+  //   const filters = {}
+  //   getTasksPag(filters, page).then(t => setTasks(t));
+  // }, []);
 
       // тут все работало
   // useEffect(() => {
@@ -23,6 +30,15 @@ const BoardTasks = () => {
     getUsers().then(u => setUsers(u));
   }, []);
 
+  const filters = {
+  
+    assignedUsers: [],
+
+  }
+useEffect(() => {
+  tasksFilter.preFiltredData = filters;
+  tasksFilter.fetch();
+  },[])
   // if (tasks === null) {
   //   return <p>Loading...</p>
   // }
@@ -32,11 +48,11 @@ const BoardTasks = () => {
 
   return (
     <div className="board">
-      {/* Sorting */}
+      <Filters users={users.data.data} />
 
       <div className="task-wrapper">
-      {tasks.data.data.length === 0 && <p>Задач нет, нажмите кнопку "Добавить"</p>}
-      {tasks.data.data.map(task => (          
+      {tasks.length === 0 && <p>Задач нет!</p>}
+      {tasks.map(task => (          
         <Task
           key={task.id}
           title={task.title}
@@ -50,9 +66,14 @@ const BoardTasks = () => {
         ))}
 
       </div>
-      <Pagination object={tasks.data}/>
+      <Pagination 
+      item={tasksTotal}
+      total={tasksTotal.total}
+      limit={tasksTotal.limit}
+      page={tasksTotal.page}
+       />
     </div>
   )
-}
+})
 
 export default BoardTasks;

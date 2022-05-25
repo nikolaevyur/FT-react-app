@@ -8,7 +8,7 @@ import TaskForm from "./pages/task-form/task-form";
 import Profile from "./pages/profile/profile";
 import TaskEdit from "./pages/task-edit/task-edit";
 import Login from "../src/pages/login/login";
-import { login } from "./store";
+import { login, tasksFilter, usersFilter } from "./store";
 import { AppRoute } from "./const";
 
 import './App.scss';
@@ -23,8 +23,8 @@ const App = observer(() => {
           ?
           <>
             <Route element={<Navigate path="*" to={AppRoute.MAIN} replace />} />
-            <Route path={AppRoute.MAIN} element={<Main />} />
-            <Route path={AppRoute.USERS} element={<Users />} />
+            <Route path={AppRoute.MAIN} element={<Main tasks={tasksFilter.filtredData}/>} />
+            <Route path={AppRoute.USERS} element={<Users users={usersFilter.data}/>} />
             <Route path={AppRoute.FORM} element={<TaskForm />} />
             <Route path={AppRoute.PROFILE_FORM} element={<Profile />} />
             <Route path={AppRoute.ADD} element={<TaskEdit />} />

@@ -1,32 +1,66 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getUser, getTasks } from "../../api";
+import { getUser, getTasks, getTasksPag } from "../../api";
 import Task from "../task/task";
 import profile from "../../assets/images/profile.svg";
 import "./board-profile.scss"
+import Pagination from "../pagination/pagination";
+import { tasksFilter } from '../../store';
+import { observer } from "mobx-react-lite";
 
-const BoardProfile = () => {
+const BoardProfile = observer(() => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [tasks, setTasks] = useState(null);
+  const tasksTotal = tasksFilter
+  const tasks = tasksFilter.filtredData;
+  // const [filters, setFilters] = useState({
+  //   query: '',
+  //   assignedUsers: [],
+  //   type: [],
+  //   status: [],
+  //   rank: [],
+  // });
+
+  // evt.preventDefault();
+  // tasksFilter.preFiltredData = filters;
+  // tasksFilter.pagination.page = 0;
+  // tasksFilter.fetch();
+  // console.log(tasksFilter.data)
+
+  const filters = {
+      query: '',
+      assignedUsers: [id],
+      userIds: [],
+      type: [],
+      status: [],
+      rank: []
+    }
+  useEffect(() => {
+    tasksFilter.preFiltredData = filters;
+    // tasksFilter.pagination.page = 0;
+    tasksFilter.fetch();
+		})
+  // const [tasks, setTasks] = useState(null);
 
   useEffect(() => {
     getUser(id).then(u => setUser(u));
   }, [id]);
 
-  useEffect(() => {
-      getTasks().then(t => setTasks(t));
-    }, []);
+  // useEffect(() => {
+  //     getTasks().then(t => setTasks(t));
+  //   }, []);
+
 
   if (user === null) {
     return <p>Loading...</p>
   }
+  // if (tasks === null) {
+  //   return <p>Loading...</p>
+  // }
+  // console.log(tasks)
 
-  if (tasks === null) {
-    return <p>Loading...</p>
-  }
-
-  const filterTasksByUser = tasks.data.data.filter(x => x.assignedId === id);
+  const filterTasksByUser = tasks.filter(x => x.assignedId === id);
+  console.log(filterTasksByUser)
 
   return (
     <div className="board">
@@ -58,8 +92,9 @@ const BoardProfile = () => {
         ))}
         </div>
       </div>
-      {/* Number of pages */}
+      <Pagination item={tasksTotal} />
     </div>
   )
-}
+})
+
 export default BoardProfile;

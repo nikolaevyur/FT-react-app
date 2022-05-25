@@ -46,10 +46,35 @@ export const addComment = (data) => {
 }
 
 //PAGINATION
-export const getTasksPag = (page) => {
-	return axios.post(`${url}/tasks`, {
-                        filter: {},
-                        page: page,
-                        limit: 7
-                    })
+// export const getTasksPag = ( preFiltredData, page) => {
+// 	return axios.post(`${url}/tasks`, {
+//                         filter: {...preFiltredData},
+//                         page: page,
+//                         limit: 7
+//                     })
+// }
+
+export const getTasksPag = (preFilter,page) => {
+  return axios.post(`${url}/tasks`, {
+      filter: {
+        ...preFilter
+      },
+      page: page,
+      limit: 8
+  })
+      .then((res) => {return res.data})
+      // .catch((err) => {})
+}
+
+export const getUsersPag = (page) => {
+  return axios.post(`${url}/users`, {
+      filter: {},
+      page: page,
+      limit: 8
+  })
+      .then((res) => {
+          return res.data;
+      })
+      // .catch((err) => {
+      // })
 }
