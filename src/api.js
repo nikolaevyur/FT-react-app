@@ -35,6 +35,10 @@ export const getLogin = (data) => {
     return axios.post(`${url}/users/login`, data);
   }
 
+export const editUser = (data) => {
+  return axios.put(`${url}/users/edit`, data)
+}
+
 
 // COMMENTS
 export const getComments = (id) => {

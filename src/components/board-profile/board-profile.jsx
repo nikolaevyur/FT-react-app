@@ -7,12 +7,15 @@ import "./board-profile.scss"
 import Pagination from "../pagination/pagination";
 import { tasksFilter } from '../../store';
 import { observer } from "mobx-react-lite";
+import Modal from "../modal/modal";
 
 const BoardProfile = observer(() => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const tasksTotal = tasksFilter
   const tasks = tasksFilter.filtredData;
+
+  const [modalActive, setModalActive] = useState(false);
   // const [filters, setFilters] = useState({
   //   query: '',
   //   assignedUsers: [],
@@ -39,7 +42,7 @@ const BoardProfile = observer(() => {
     tasksFilter.preFiltredData = filters;
     // tasksFilter.pagination.page = 0;
     tasksFilter.fetch();
-		})
+		}, [])
   // const [tasks, setTasks] = useState(null);
 
   useEffect(() => {
@@ -62,9 +65,12 @@ const BoardProfile = observer(() => {
   const filterTasksByUser = tasks.filter(x => x.assignedId === id);
   console.log(filterTasksByUser)
 
+  const loginUserData = JSON.parse(localStorage.getItem("loginUser"));
+
   return (
     <div className="board">
       <div className="profile">
+        {loginUserData.id === id && <button onClick={() => setModalActive(true)}></button>}
         <div className="profile__info">
             <img 
             src={user.data.photoUrl === null ? profile : user.data.photoUrl} 
@@ -93,6 +99,11 @@ const BoardProfile = observer(() => {
         </div>
       </div>
       <Pagination item={tasksTotal} />
+      <Modal 
+        active={modalActive} 
+        setActive={setModalActive}
+        user={user.data}
+        loginUser={loginUserData}/>
     </div>
   )
 })

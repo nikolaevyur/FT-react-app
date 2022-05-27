@@ -18,14 +18,8 @@ const Filters = observer((props) => {
   });
   const [checked, setChecked] = useState([]);
 
-  const [DropdownsOpen, setDropdownsOpen] = useState(false)
-
-  const toggleDropdownOpens = () => {
-    DropdownsOpen === true &&
-    setDropdownsOpen(false)
-  }
-
   const [isDropdownShown, setDropdownShown] = useState(false)
+  // Сделать отдельно открывашки для каждого дропдауна
 
   const toggleDropdownShown = () => {
     setDropdownShown(!isDropdownShown)
@@ -67,7 +61,6 @@ const Filters = observer((props) => {
       <div className="checkList">
       <input 
         onClick={toggleDropdownShown} 
-        onChange={toggleDropdownOpens}
         readOnly 
         placeholder={"Пользователь"} 
         type="text" 

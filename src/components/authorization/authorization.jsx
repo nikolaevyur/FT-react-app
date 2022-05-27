@@ -16,7 +16,7 @@ const Authorization = observer(({ login }) => {
     await login.getLogin(form)
     if (login.loginUser.id) {
       localStorage.setItem("login", true);
-      localStorage.setItem("loginUser", JSON.stringify({...login.loginUser}))
+      localStorage.setItem("loginUser", JSON.stringify({...login.loginUser, password: form.password}))
       window.location.assign(AppRoute.MAIN)
     }
     else {
