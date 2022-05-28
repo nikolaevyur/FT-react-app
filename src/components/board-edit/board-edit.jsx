@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import EditForm from "../edit-form/edit-form";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getTask,getUsers } from "../../api";
 import { AppRoute } from "../../const";
 import AddForm from "../add-form/add-form";
+import Title from "../title/title";
 
 const BoardEdit = () => {
 
@@ -27,13 +28,13 @@ const BoardEdit = () => {
   // }
 
   return (
-    <div className="board">
+    <>
       {id && <EditForm 
       task={task}
       users={users.data.data}
       />}
       {window.location.pathname === AppRoute.ADD && <AddForm users={users.data.data} />}
-    </div>
+    </>
   )
 }
 

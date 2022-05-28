@@ -1,14 +1,22 @@
 @import "../../assets/styles/variables";
 
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ margin-top: 2%;
+}
+
 .board {
+
+  width: 100%;
+  max-width: 1280px;
+  min-width: 1060px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-
-  position: absolute;
-  width: 1280px;
-  height: 642px;
+  // height: 642px;
   left: calc(50% - 1280px/2);
   top: calc(50% - 642px/2 + 54px);
 

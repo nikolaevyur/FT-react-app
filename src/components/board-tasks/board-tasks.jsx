@@ -1,11 +1,16 @@
 import React, {useState, useEffect} from "react";
 import Task from "../task/task";
 import Filters from "../filters/filters"
-import "./board-tasks.scss";
 import { observer } from "mobx-react-lite";
 import { getTasks, getTasksPag, getUsers } from "../../api";
 import { tasksFilter } from '../../store';
 import Pagination from "../pagination/pagination";
+import Title from "../title/title";
+
+import "./board-tasks.scss";
+import "../../assets/styles/_buttons.scss"
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const";
 
 const BoardTasks = observer(() => {
   const [users, setUsers] = useState(null);
@@ -47,6 +52,15 @@ useEffect(() => {
   if (!users) return null;
 
   return (
+    <div className="wrapper">
+    <Title>
+      <div className="title__text">
+        Задачи
+      </div>
+      <div className="title__buttons">
+        <Link to={AppRoute.ADD} ><button className="btn btn-primary">Добавить задачу</button></Link>
+      </div>
+    </Title>
     <div className="board">
       <Filters users={users.data.data} />
 
@@ -72,6 +86,7 @@ useEffect(() => {
       limit={tasksTotal.limit}
       page={tasksTotal.page}
        />
+    </div>
     </div>
   )
 })

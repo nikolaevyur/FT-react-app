@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { addTask, getTask,getUsers } from "../../api";
 import { AppRoute } from "../../const";
+import Title from "../title/title";
 
 
 const AddForm = ({users}) => {
@@ -30,8 +31,24 @@ const AddForm = ({users}) => {
       .then(() => window.location.assign(AppRoute.MAIN))
     }
 
+  const handleCancel = (evt) => {
+    evt.preventDefault();
+    window.history.back()
+  }
+  
   
   return (
+    <div className="wrapper">
+      <Title>
+        <div className="title__text">
+          Создание
+        </div>
+        <div className="title__buttons">
+          <button onClick={handleSubmit} type="submit" className="btn btn-primary">Добавить</button>
+          <button onClick={handleCancel} className="btn btn-default">Отмена</button>
+        </div>
+      </Title>
+      <div className="board">
     <form className="task__form" onSubmit={handleSubmit}>
       <div className="column__first">
       <label htmlFor="title" className="task__label task__label--title">Исполнитель</label>
@@ -84,10 +101,9 @@ const AddForm = ({users}) => {
         ></textarea>
       </fieldset>
       </div>
-      <div className="btns">
-        <button type="submit" className="btn-submit">Добавить</button>
-      </div>
     </form>
+    </div>
+    </div>
   )
 }
 

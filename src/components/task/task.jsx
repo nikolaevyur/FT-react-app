@@ -22,7 +22,9 @@ const Task = (props) => {
         <div className="task__user">{user === undefined ? "Loading..." : user.username}</div>}
       <Status status={props.status}/>
       <Priority  rank={props.rank}/>
-      <TaskBurger id={id} />
+      <TaskBurger 
+      id={id}
+      status={props.status} />
     </div>
   )
 }

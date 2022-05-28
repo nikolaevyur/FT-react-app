@@ -14,8 +14,21 @@ export const getTasks = () => {
 export const getTask = (id) => {
 	return axios.get(`${url}/tasks/${id}`)
 }
+
 export const addTask = (data) => {
   return axios.put(`${url}/tasks/createOrEdit`, data)
+}
+
+export const addTime = (id, data) => {
+	return axios.patch(`${url}/tasks/${id}/worktime`, data)
+}
+
+export const changeStatus = (id, status) => {
+  return axios.patch(`${url}/tasks/${id}/status/${status}`)
+}
+
+export const deleteTask = (id) => {
+  return axios.delete(`${url}/tasks/${id}`)
 }
 
 // USERS
@@ -47,6 +60,10 @@ export const getComments = (id) => {
 
 export const addComment = (data) => {
 	return axios.put(`${url}/comments/createOrEdit`, data)
+}
+
+export const deleteComment = (id) => {
+	return axios.delete(`${url}/comments/${id}`)
 }
 
 //PAGINATION

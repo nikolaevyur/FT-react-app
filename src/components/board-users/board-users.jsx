@@ -5,6 +5,7 @@ import { getUsers} from "../../api";
 import Pagination from "../pagination/pagination";
 import { usersFilter } from "../../store";
 import { observer } from "mobx-react-lite";
+import Title from "../title/title";
 
 const BoardUsers = observer(() => {
   const users = usersFilter.data;
@@ -25,6 +26,12 @@ const BoardUsers = observer(() => {
   // const currentUser = users.data.data.slice(firstUserIndex, lastUserIndex)
 
   return (
+    <div className="wrapper">
+      <Title>
+      <div className="title__text">
+        Пользователи
+      </div>
+      </Title>
     <div className="board">
       <div className="users-wrapper">
         {users.map(user => (
@@ -38,6 +45,7 @@ const BoardUsers = observer(() => {
      <Pagination 
     item={usersTotal}
      />
+    </div>
     </div>
   )
 })

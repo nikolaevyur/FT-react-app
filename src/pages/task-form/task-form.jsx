@@ -1,12 +1,12 @@
 import React from "react";
-import FormBoard from "../../components/form-board/form-board";
+import BoardForm from "../../components/board-form/board-form";
 import Header from "../../components/header/header";
 
 const TaskForm = () => {
   return (
     <>
       <Header />
-      <FormBoard />
+      <BoardForm />
     </>
   )
 }

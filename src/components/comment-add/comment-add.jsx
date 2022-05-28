@@ -34,7 +34,7 @@ const CommentAdd = (props) => {
           required
         >
         </textarea>
-				<button type='submit'>Добавить комментарий</button>
+				<button type="submit" className="btn btn-success">Добавить комментарий</button>
 			</form>
   )
   }

@@ -78,7 +78,7 @@ const Filters = observer((props) => {
         filters={filters} 
         setFilters={setFilters} />
       <SelectRank filters={filters} setFilters={setFilters} />
-      <button onClick={handlSubmit}>
+      <button className="btn btn-primary" onClick={handlSubmit}>
         Применить
       </button>
     </div>

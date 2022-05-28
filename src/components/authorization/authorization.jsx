@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import "../../components/authorization/authorization.scss"
 import { AppRoute } from '../../const';
+
+import "../../components/authorization/authorization.scss";
+import "../../assets/styles/_buttons.scss"
 
 const Authorization = observer(({ login }) => {
 
@@ -58,7 +60,7 @@ const Authorization = observer(({ login }) => {
           />
         </label>
         <div>
-          <button className="login__btn" type="submit">Вход</button>
+          <button className="login__btn btn btn-success" type="submit">Вход</button>
         </div>
       </form>
     </div>

@@ -15,6 +15,7 @@ import './App.scss';
 
 const App = observer(() => {
   const checkLogin = localStorage.getItem("login");
+  console.log(checkLogin)
 
   return (
     <BrowserRouter>

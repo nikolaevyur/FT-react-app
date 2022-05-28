@@ -1,5 +1,5 @@
 import {makeAutoObservable, flow, onBecomeObserved } from "mobx";
-import { getLogin, getTasks, getTasksPag, getUsersPag } from "../api"
+import { changeStatus, deleteTask, getLogin, getTasks, getTasksPag, getUsersPag } from "../api"
 
 class LoginStore {
   loginUser = {};
@@ -61,8 +61,15 @@ class TasksFilter {
     this.filtredData = response.data;
     this.pagination.total = response.total;
     this.currentTask = {};
-
   }
+
+  async changeTaskStatus(id, status){
+		await changeStatus(id, status);
+	}
+
+  async deleteTask(id){
+		await deleteTask(id);
+	}
   // data = [];
   // preFiltredData = {};
   // // filtredData = [];

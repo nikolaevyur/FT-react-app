@@ -4,10 +4,11 @@
   display: flex;
   height: 640px;
   column-gap: 20px;
+  width: 100%;
 }
 
 .first-column {
-  width: 330px;
+  width: 26%;
   border-right: 1px solid $grey;
 
   &__info-task {
@@ -16,12 +17,12 @@
 }
 
 .second-column {
-  width: 420px;
+  width: 33%;
   border-right: 1px solid $grey;
 }
 
 .third-column {
-  width: 480px;
+  width: 41%;
 }
 
 .column-title {

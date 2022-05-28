@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { action } from 'mobx';
-import { tasks } from "../../store";
+import { action } from "mobx";
 import "moment/locale/ru";
 import { observer } from "mobx-react-lite";
+
+import "./pagination.scss"
 
 const Pagination = observer(({item}) => {
   //длина всего списка
@@ -22,42 +23,40 @@ const Pagination = observer(({item}) => {
   const prevPage = action(() => {
     item.pagination.page -= 1;
     item.fetch();
-    //tasks.fetchAsyncTask2();
   })
   const nextPage = action(() => {
     item.pagination.page += 1;
     item.fetch();
-   // tasks.fetchAsyncTask2();
   })
 
   const handleClick = action((evt) => {
     item.pagination.page = Number(evt.target.value);
     item.fetch();
-   // tasks.fetchAsyncTask2();
   })
 
   return (
-    <div className="pag_buttons">
+    <div className="pagination">
 
-
+    <div className="pagination__btns" >
     <button
-      className='btn default'
+      className="btn btn-default"
       onClick={prevPage}
       disabled={page == 0}
-    > {'Назад'} </button>
+    > {"Назад"} </button>
 
-    {pages.map(pageNum => <button type='button' value={pageNum} onClick={handleClick} className=' btn primary' >{pageNum + 1}</button>)}
+    {pages.map(pageNum => <button type="button" value={pageNum} onClick={handleClick} className="btn btn-default btn-pag" >{pageNum + 1}</button>)}
 
     <button
-      className='btn default'
+      className="btn btn-default"
       onClick={nextPage}
       disabled={Math.floor(totalLength / 8) < page+1 || totalLength-(page+1)*8 == 0}
-    > {'Вперед'} </button>
-
-
-
-    <span className="pagination-info">
-      Показано {(page*item.pagination.limit)+1}-{((page*item.pagination.limit)+item.pagination.limit)> totalLength ? totalLength : ((page*item.pagination.limit)+item.pagination.limit) } из {totalLength} </span>
+    > {"Вперед"} </button>
+    </div>
+    <div>
+    <span className="">
+      Показано {(page*item.pagination.limit)+1}-{((page*item.pagination.limit)+item.pagination.limit)> totalLength ? totalLength : ((page*item.pagination.limit)+item.pagination.limit) } из {totalLength}
+    </span>
+    </div>
 
   </div>
 
