@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// import './app-select.scss'
+import './select-type.scss'
 
 const SelectType = ({ filters, setFilters }) => {
 
@@ -24,19 +24,24 @@ const SelectType = ({ filters, setFilters }) => {
   };
 
   return (
-    <div className="checkList">
+    <div className="select-type">
       <input
         onClick={toggleDropdownShown}
         placeholder={"Тип"}
         type="text"
+        className="select-type__input"
       />
-      <div className="app-select__dropdown">
+      <div className="select-type__checklist">
         {isDropdownShown &&
-          <div>
+          <div className="select-type__dropdown">
+            <div className="dropdown__item">
             <input value={"bug"} type="checkbox" onClick={(event) => handleCheck(event)} />
             <label>Ошибка</label>
+            </div>
+            <div className="dropdown__item">
             <input value={"task"} type="checkbox" onClick={(event) => handleCheck(event)} />
             <label>Задача</label>
+            </div>
           </div>
         }
       </div>

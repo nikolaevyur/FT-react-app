@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// import './app-select.scss'
+import './select-status.scss'
 
 const SelectStatus = ({ filters, setFilters }) => {
 
@@ -24,23 +24,32 @@ const SelectStatus = ({ filters, setFilters }) => {
   };
 
   return (
-    <div className="checkList">
+    <div className="select-status">
       <input
         onClick={toggleDropdownShown}
         placeholder={"Статус"}
         type="text"
+        className="select-status__input"
       />
-      <div className="app-select__dropdown">
+      <div className="select-status__checklist">
         {isDropdownShown &&
-          <div>
-            <input value={"opened"} type="checkbox" onClick={handleCheck} />
-            <label>Открыто</label>
-            <input value={"inProgress"} type="checkbox" onClick={handleCheck} />
-            <label>В работе</label>
-            <input value={"testing"} type="checkbox" onClick={handleCheck} />
-            <label>Тестирование</label>
-            <input value={"complete"} type="checkbox" onClick={handleCheck} />
-            <label>Сделано</label>
+          <div className="select-status__dropdown">
+            <div className="dropdown__item">
+              <input value={"opened"} type="checkbox" onClick={handleCheck} />
+              <label>Открыто</label>
+            </div>
+            <div className="dropdown__item">
+              <input value={"inProgress"} type="checkbox" onClick={handleCheck} />
+              <label>В работе</label>
+            </div>
+            <div className="dropdown__item">
+              <input value={"testing"} type="checkbox" onClick={handleCheck} />
+              <label>Тестирование</label>
+            </div>
+            <div className="dropdown__item">
+              <input value={"complete"} type="checkbox" onClick={handleCheck} />
+              <label>Сделано</label>
+            </div>
           </div>
         }
       </div>

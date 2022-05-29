@@ -5,9 +5,11 @@
   flex-direction: row;
   align-items: center;
   padding: 20px 30px;
+  height: 2%;
 
   &__name {
     width: 527px;
+    overflow: hidden;
   }
 
   &__user {

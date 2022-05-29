@@ -81,7 +81,7 @@ export const getTasksPag = (preFilter,page) => {
         ...preFilter
       },
       page: page,
-      limit: 8
+      limit: 10
   })
       .then((res) => {return res.data})
       // .catch((err) => {})

@@ -1,10 +1,10 @@
 @import "../../assets/styles/variables";
 
-.wrapper{
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
- margin-top: 2%;
+  margin-top: 2%;
 }
 
 .board {
@@ -16,18 +16,23 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  // height: 642px;
+  height: 642px;
   left: calc(50% - 1280px/2);
   top: calc(50% - 642px/2 + 54px);
-
   background: $white;
   box-shadow: 0px 0px 5px 3px $grey;
   border-radius: 5px;
-  
+  row-gap: 1%;
+
   .task-wrapper {
     box-shadow: inset 0px 0px 2px 1px #B5B5B5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
     border-radius: 3px;
     width: 100%;
+    height: 580px;
+    margin-top: 30px;
   }
-  }
-
+}

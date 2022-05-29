@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// import './app-select.scss'
+import './select-rank.scss'
 
 const SelectRank = ({ filters, setFilters }) => {
 
@@ -24,21 +24,28 @@ const SelectRank = ({ filters, setFilters }) => {
   };
 
   return (
-    <div className="checkList">
+    <div className="select-rank">
       <input
         onClick={toggleDropdownShown}
         placeholder={"Приоритет"}
         type="text"
+        className="select-rank__input"
       />
-      <div className="app-select__dropdown">
+      <div className="select-rank__checklist">
         {isDropdownShown &&
-          <div>
+          <div className="select-rank__dropdown">
+            <div className="dropdown__item">
             <input value={"low"} type="checkbox" onClick={handleCheck} />
             <label>Низкий</label>
+            </div>
+            <div className="dropdown__item">
             <input value={"medium"} type="checkbox" onClick={handleCheck} />
             <label>Средний</label>
+            </div>
+            <div className="dropdown__item">
             <input value={"high"} type="checkbox" onClick={handleCheck} />
             <label>Высокий</label>
+            </div>
           </div>
         }
       </div>

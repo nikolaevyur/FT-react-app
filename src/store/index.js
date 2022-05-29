@@ -47,7 +47,7 @@ class TasksFilter {
   filtredData = [];
   currentTask = {};
   currentComments = [];
-  pagination = {limit:8, page:0, total:0};
+  pagination = {limit:10, page:0, total:0};
   testTasks = [];
   constructor () {
     makeAutoObservable(this,{},{

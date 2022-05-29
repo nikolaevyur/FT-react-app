@@ -51,21 +51,22 @@ const Filters = observer((props) => {
 
   console.log(filters)
   return (
-    <div className='filters__wrapper'>
+    <div className="filters__wrapper">
       <SelectType filters={filters} setFilters={setFilters} />
       <input
+        className="filters__input"
         type="text"
         onChange={handlChange}
         value={filters.query}
       />
-      <div className="checkList">
+      <div className="filters__checklist">
       <input 
         onClick={toggleDropdownShown} 
-        readOnly 
         placeholder={"Пользователь"} 
-        type="text" 
+        type="text"
+        className="select-user__input"
       />
-        <div className="app-select__dropdown">
+        <div className="filters__dropdown">
           {isDropdownShown && props.users.map(user => (
             <div key={user.id}>
               <input value={user.id} type="checkbox" onClick={(event) => handleCheck(event)} />
