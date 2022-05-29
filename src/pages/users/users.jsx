@@ -1,13 +1,13 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import BoardUsers from "../../components/board-users/board-users";
 import Header from "../../components/header/header";
-import { observer } from "mobx-react-lite";
 
-const Users = observer (({tasks, users}) => {
+const Users = observer (({users}) => {
   return (
     <>
       <Header />
-      <BoardUsers   tasks={tasks} users={users} />
+      <BoardUsers users={users} />
     </>
   )
 })

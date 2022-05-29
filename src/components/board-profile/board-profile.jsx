@@ -15,7 +15,7 @@ const BoardProfile = observer(() => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const tasksTotal = tasksFilter
-  const tasks = tasksFilter.filtredData;
+  const tasks = tasksFilter.tasksData;
 
   const [modalActive, setModalActive] = useState(false);
   // const [filters, setFilters] = useState({
@@ -27,7 +27,7 @@ const BoardProfile = observer(() => {
   // });
 
   // evt.preventDefault();
-  // tasksFilter.preFiltredData = filters;
+  // tasksFilter.preFilter = filters;
   // tasksFilter.pagination.page = 0;
   // tasksFilter.fetch();
   // console.log(tasksFilter.data)
@@ -41,7 +41,7 @@ const BoardProfile = observer(() => {
     rank: []
   }
   useEffect(() => {
-    tasksFilter.preFiltredData = filters;
+    tasksFilter.preFilter = filters;
     // tasksFilter.pagination.page = 0;
     tasksFilter.fetch();
   }, [])

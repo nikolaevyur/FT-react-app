@@ -67,24 +67,15 @@ export const deleteComment = (id) => {
 }
 
 //PAGINATION
-// export const getTasksPag = ( preFiltredData, page) => {
-// 	return axios.post(`${url}/tasks`, {
-//                         filter: {...preFiltredData},
-//                         page: page,
-//                         limit: 7
-//                     })
-// }
-
-export const getTasksPag = (preFilter,page) => {
+export const getTasksPag = (filter, page) => {
   return axios.post(`${url}/tasks`, {
       filter: {
-        ...preFilter
+        ...filter
       },
       page: page,
       limit: 10
   })
-      .then((res) => {return res.data})
-      // .catch((err) => {})
+      .then((result) => {return result.data})
 }
 
 export const getUsersPag = (page) => {
@@ -93,9 +84,5 @@ export const getUsersPag = (page) => {
       page: page,
       limit: 10
   })
-      .then((res) => {
-          return res.data;
-      })
-      // .catch((err) => {
-      // })
+      .then((result) => {return result.data})
 }

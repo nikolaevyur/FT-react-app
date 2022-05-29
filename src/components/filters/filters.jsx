@@ -41,7 +41,7 @@ const Filters = observer((props) => {
 
   const handlSubmit = (evt) => {
     evt.preventDefault();
-    tasksFilter.preFiltredData = filters;
+    tasksFilter.preFilter = filters;
     tasksFilter.pagination.page = 0;
     tasksFilter.fetch();
     console.log(tasksFilter.data)

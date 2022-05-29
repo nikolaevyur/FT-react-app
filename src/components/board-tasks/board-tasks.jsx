@@ -14,7 +14,7 @@ import { AppRoute } from "../../const";
 
 const BoardTasks = observer(() => {
   const [users, setUsers] = useState(null);
-  const tasks = tasksFilter.filtredData;
+  const tasks = tasksFilter.tasksData;
   const tasksTotal = tasksFilter
 
 
@@ -41,7 +41,7 @@ const BoardTasks = observer(() => {
 
   }
 useEffect(() => {
-  tasksFilter.preFiltredData = filters;
+  tasksFilter.preFilter = filters;
   tasksFilter.fetch();
   },[])
   // if (tasks === null) {

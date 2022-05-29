@@ -11,7 +11,7 @@ import Login from "../src/pages/login/login";
 import { login, tasksFilter, usersFilter } from "./store";
 import { AppRoute } from "./const";
 
-import './App.scss';
+import "./App.scss";
 
 const App = observer(() => {
   const checkLogin = localStorage.getItem("login");
@@ -24,7 +24,7 @@ const App = observer(() => {
           ?
           <>
             <Route element={<Navigate path="*" to={AppRoute.MAIN} replace />} />
-            <Route path={AppRoute.MAIN} element={<Main tasks={tasksFilter.filtredData}/>} />
+            <Route path={AppRoute.MAIN} element={<Main tasks={tasksFilter.tasksData}/>} />
             <Route path={AppRoute.USERS} element={<Users users={usersFilter.data}/>} />
             <Route path={AppRoute.FORM} element={<TaskForm />} />
             <Route path={AppRoute.PROFILE_FORM} element={<Profile />} />
