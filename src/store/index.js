@@ -115,7 +115,7 @@ class UsersFilter {
     usersList = {};
     profileData = {};
     currentUserData = {};
-    pagination = {limit:8, page:0, total:0};
+    pagination = {limit:10, page:0, total:0};
     constructor () {
       makeAutoObservable(this,{},{
         autoBind: true,

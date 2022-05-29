@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { editUser } from "../../api";
 import { AppRoute } from "../../const";
 
-import "./modal.scss"
+import "./modal.scss";
+import "../../assets/styles/_buttons.scss";
 
 const Modal = ({ active, setActive, user, loginUser }) => {
   //Form of user
@@ -26,43 +27,52 @@ const Modal = ({ active, setActive, user, loginUser }) => {
       .then(() => window.location.reload())
   }
 
+  const handleCancel = (evt) => {
+    evt.preventDefault();
+    window.location.reload()
+  }
+
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
       <div className="modal__content" onClick={e => e.stopPropagation()}>
         <form className="modal__form" onSubmit={handleSubmit}>
-          <div className="">
-            <label>Имя пользователя</label>
+          <div className="modal__main-title">Редактирование пользователя</div>
+          <div className="modal__first">
+            <label className="modal__title">Имя пользователя</label>
             <input
               name="username"
               placeholder="Имя"
-              className="modal__input"
+              className="modal__input input"
               type="text"
               defaultValue={form.username}
               onChange={handleFieldChange}
             />
           </div>
-          <div className="">
-            <label>URL фотографии</label>
+          <div className="modal__second">
+            <label className="modal__title">URL фотографии</label>
             <input
               name="photoUrl"
               placeholder="Введите URL"
-              className="modal__input"
+              className="modal__input input"
               type="text"
               defaultValue={form.photoUrl}
               onChange={handleFieldChange}
             />
           </div>
-          <label>О себе</label>
-          <div className="">
+          <div className="modal__third">
+          <label className="modal__title">О себе</label>
             <input
               name="about"
-              className=""
+              className="modal__comment input"
               defaultValue={form.about}
               onChange={handleFieldChange}
+              placeholder="Расскажите о себе"
+              maxLength={50}
             />
           </div>
-          <div className="btns">
-            <button type="submit" className="btn-submit">Сохранить</button>
+          <div className="modal__btns">
+            <button type="submit" className="btn btn-primary">Сохранить</button>
+            <button onClick={handleCancel} className="btn btn-default">Отмена</button>
           </div>
         </form>
       </div>

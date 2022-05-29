@@ -19,10 +19,16 @@
 .second-column {
   width: 33%;
   border-right: 1px solid $grey;
+
+  &__description{
+    overflow: auto;
+    height: 602px;
+  }
 }
 
 .third-column {
   width: 41%;
+  overflow: auto;
 }
 
 .column-title {

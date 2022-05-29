@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { addComment, addTask, getComments, getTask,getUsers } from "../../api";
 import { AppRoute } from "../../const";
 
+import "../../assets/styles/_buttons.scss"
+import "./comment-add.scss"
 
 const CommentAdd = (props) => {
   const userData = JSON.parse(localStorage.getItem("loginUser"))
@@ -32,6 +34,7 @@ const CommentAdd = (props) => {
           name="text" 
           onChange={handleFieldChange} 
           required
+          className="comment-input input"
         >
         </textarea>
 				<button type="submit" className="btn btn-success">Добавить комментарий</button>

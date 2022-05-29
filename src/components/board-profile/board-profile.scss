@@ -6,10 +6,14 @@
 
   &__info {
     width: 25%;
+    height: 600px;
     border-right: 1px solid $grey;
-    padding: 20px;
+    padding-right: 20px;
   }
-  
+  &__about-text{
+    width: 250px;
+    overflow: hidden;
+  }
   &__title{
     color: #CCCCCC;
   }
@@ -24,7 +28,10 @@
   &__info-right{
     width: 75%;
     height: 75%;
-    padding: 20px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
   }
 
   &__tasks {

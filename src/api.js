@@ -91,7 +91,7 @@ export const getUsersPag = (page) => {
   return axios.post(`${url}/users`, {
       filter: {},
       page: page,
-      limit: 8
+      limit: 10
   })
       .then((res) => {
           return res.data;

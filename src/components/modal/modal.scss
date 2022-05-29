@@ -19,7 +19,52 @@
     background-color: #fff;
     width: 430px;
     height: 405px;
-    
+  }
+
+  &__form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  &__main-title{
+    font-size: 20px;
+    line-height: 23px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px #B5B5B5;
+  }
+
+  &__title{
+    color: #CCCCCC;
+  }
+
+  &__first{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+
+  &__second{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+
+  &__third{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px #B5B5B5;
+  }
+
+  &__comment{
+    height: 80px;
+  }
+
+  &__btns{
+    display: flex;
+    column-gap: 10px;
   }
 }
 
@@ -27,3 +72,4 @@
   opacity: 1;
   pointer-events: all;
 }
+

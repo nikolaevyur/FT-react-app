@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { addTask } from "../../api";
 import { AppRoute } from "../../const";
+import Title from "../title/title";
 
 import "../edit-form/edit-form.scss"
-import Title from "../title/title";
+import "../../assets/styles/_buttons.scss"
 
 
 const EditForm = ({ users, task }) => {
@@ -46,6 +47,7 @@ const EditForm = ({ users, task }) => {
           <div className="column__first">
             <label htmlFor="title" className="task__label task__label--title">Исполнитель</label>
             <select
+            className="input"
               name="assignedId"
               defaultValue={form.assignedId}
               onChange={handleFieldChange}>
@@ -55,7 +57,7 @@ const EditForm = ({ users, task }) => {
               })}
             </select>
             <label htmlFor="title" className="task__label task__label--title">Тип запроса</label>
-            <select name="type" defaultValue={form.type} onChange={handleFieldChange}>
+            <select className="input" name="type" defaultValue={form.type} onChange={handleFieldChange}>
               <option value={"task"}
               >Задача
               </option>
@@ -65,7 +67,7 @@ const EditForm = ({ users, task }) => {
             </select>
 
             <label htmlFor="rank" className='taskPage-title'>Приоритет</label>
-            <select name="rank" defaultValue={form.rank} onChange={handleFieldChange}>
+            <select className="input" name="rank" defaultValue={form.rank} onChange={handleFieldChange}>
               <option value={"low"}>Низкий</option>
               <option value={"medium"}>Средний</option>
               <option value={"high"}> Высокий</option>
@@ -77,7 +79,7 @@ const EditForm = ({ users, task }) => {
               <textarea
                 type="text"
                 onChange={handleFieldChange}
-                className="task__input task__input--title"
+                className="task__input task__input--title input"
                 name="title"
                 value={form.title}
                 required
@@ -88,7 +90,7 @@ const EditForm = ({ users, task }) => {
               <textarea
                 type="text"
                 onChange={handleFieldChange}
-                className="task__input task__input--description"
+                className="task__input task__input--description input"
                 name="description"
                 value={form.description}
                 required

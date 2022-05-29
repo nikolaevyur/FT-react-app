@@ -52,7 +52,8 @@ const AddForm = ({users}) => {
     <form className="task__form" onSubmit={handleSubmit}>
       <div className="column__first">
       <label htmlFor="title" className="task__label task__label--title">Исполнитель</label>
-      <select 
+      <select
+      className="input" 
         name="assignedId"
         defaultValue={userData.id} 
         onChange={handleFieldChange}>
@@ -61,7 +62,7 @@ const AddForm = ({users}) => {
         })}
       </select>
       <label htmlFor="title" className="task__label task__label--title">Тип запроса</label>
-      <select name="type" onChange={handleFieldChange}>
+      <select name="type" onChange={handleFieldChange} className="input" >
         <option defaultValue={"task"} value={"task"}
         >Задача
         </option>
@@ -71,7 +72,7 @@ const AddForm = ({users}) => {
       </select>
 
       <label htmlFor="rank" className='taskPage-title'>Приоритет</label>
-      <select name="rank" onChange={handleFieldChange}>
+      <select name="rank" onChange={handleFieldChange} className="input" >
         <option defaultValue={"low"} value={"low"}>Низкий</option>
         <option value={"medium"}>Средний</option>
         <option value={"high"}> Высокий</option>
@@ -83,7 +84,7 @@ const AddForm = ({users}) => {
         <textarea
           type="text"
           onChange={handleFieldChange}
-          className="task__input task__input--title"
+          className="task__input task__input--title input"
           name="title"
           value={form.title}
           required
@@ -94,7 +95,7 @@ const AddForm = ({users}) => {
         <textarea
           type="text"
           onChange={handleFieldChange}
-          className="task__input task__input--description"
+          className="task__input task__input--description input"
           name="description"
           value={form.description}
           required

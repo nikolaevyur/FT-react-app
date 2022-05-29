@@ -29,21 +29,22 @@ const SelectRank = ({ filters, setFilters }) => {
         onClick={toggleDropdownShown}
         placeholder={"Приоритет"}
         type="text"
-        className="select-rank__input"
+        className="select-rank__input input"
+        maxlength="0"
       />
       <div className="select-rank__checklist">
         {isDropdownShown &&
           <div className="select-rank__dropdown">
             <div className="dropdown__item">
-            <input value={"low"} type="checkbox" onClick={handleCheck} />
+            <input value={"low"} type="checkbox" onClick={handleCheck} className="input"/>
             <label>Низкий</label>
             </div>
             <div className="dropdown__item">
-            <input value={"medium"} type="checkbox" onClick={handleCheck} />
+            <input value={"medium"} type="checkbox" onClick={handleCheck} className="input"/>
             <label>Средний</label>
             </div>
             <div className="dropdown__item">
-            <input value={"high"} type="checkbox" onClick={handleCheck} />
+            <input value={"high"} type="checkbox" onClick={handleCheck} className="input"/>
             <label>Высокий</label>
             </div>
           </div>

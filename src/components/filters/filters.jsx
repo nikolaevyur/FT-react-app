@@ -6,6 +6,7 @@ import SelectStatus from '../select-status/select-status';
 import SelectType from '../select-type/select-type';
 
 import './filters.scss'
+import "../../assets/styles/_buttons.scss"
 
 
 const Filters = observer((props) => {
@@ -19,7 +20,6 @@ const Filters = observer((props) => {
   const [checked, setChecked] = useState([]);
 
   const [isDropdownShown, setDropdownShown] = useState(false)
-  // Сделать отдельно открывашки для каждого дропдауна
 
   const toggleDropdownShown = () => {
     setDropdownShown(!isDropdownShown)
@@ -39,7 +39,6 @@ const Filters = observer((props) => {
 
   const handlChange = (evt) => { setFilters({ ...filters, query: evt.target.value }) }
 
-  //отправляем форму
   const handlSubmit = (evt) => {
     evt.preventDefault();
     tasksFilter.preFiltredData = filters;
@@ -54,22 +53,24 @@ const Filters = observer((props) => {
     <div className="filters__wrapper">
       <SelectType filters={filters} setFilters={setFilters} />
       <input
-        className="filters__input"
+        className="filters__input input"
         type="text"
         onChange={handlChange}
         value={filters.query}
+        placeholder="Название задачи"
       />
       <div className="filters__checklist">
       <input 
         onClick={toggleDropdownShown} 
         placeholder={"Пользователь"} 
         type="text"
-        className="select-user__input"
+        className="select-user__input input"
+        maxlength="0"
       />
         <div className="filters__dropdown">
           {isDropdownShown && props.users.map(user => (
             <div key={user.id}>
-              <input value={user.id} type="checkbox" onClick={(event) => handleCheck(event)} />
+              <input className="input" value={user.id} type="checkbox" onClick={(event) => handleCheck(event)} />
               <label htmlFor={user.id}>{user.username}</label>
             </div>
           ))}

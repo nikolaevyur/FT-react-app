@@ -40,7 +40,7 @@ const Authorization = observer(({ login }) => {
         <label>
           <p className="login__title-input">Логин</p>
           <input
-            className="login__input"
+            className="login__input input"
             type="text"
             placeholder="Логин"
             value={form.login}
@@ -51,7 +51,7 @@ const Authorization = observer(({ login }) => {
         <label>
           <p className="login__title-input">Пароль</p>
           <input
-            className="login__input"
+            className="login__input input"
             type="password"
             placeholder="Пароль"
             value={form.password}

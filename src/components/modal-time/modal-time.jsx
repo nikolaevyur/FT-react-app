@@ -22,6 +22,7 @@ const ModalTime = ({ active, setActive, loginUser, id }) => {
     setTime({ ...time, [name]: value});
   };
 
+  console.log(time)
   
   const handleSubmitTime = (evt) => {
     evt.preventDefault();
@@ -38,43 +39,50 @@ form
       .then(() => window.location.reload())
   }
 
+  const handleCancel = (evt) => {
+    evt.preventDefault();
+    window.location.reload()
+  }
+
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
       <div className="modal__content" onClick={e => e.stopPropagation()}>
           <form className="modal__form" onSubmit={handleSubmitTime}>
-            <div className="">
-              <label>Затраченное время</label>
+            <div className="modal__main-title">Запись о работе</div>
+            <div className="modal__first">
+              <label className="modal__title">Затраченное время</label>
               <input
                 name="number"
                 placeholder="Время"
-                className="modal__input"
+                className="modal__input input"
                 type="number"
                 value={time.number}
                 onChange={handleChangeTime}
-                // min={0}
                 required
               />
             </div>
-            <div className="">
-              <label>Единицы измерения</label>
-              <select name="format" onChange={handleChangeTime} >
+            <div className="modal__second">
+              <label className="modal__title">Единицы измерения</label>
+              <select className="modal__input input" name="format" onChange={handleChangeTime} >
+                <option hidden>Выберите единицу измерения</option> 
                 <option defaultValue={"minute"}  value={"minute"}>Минуты</option>
                 <option value={"hour"}>Часы</option>
                 <option value={"day"}>Дни</option>
               </select>
             </div>
-            <label>Комментарий</label>
-            <div className="">
-              <textarea
+            <div className="modal__third">
+            <label className="modal__title">Комментарий</label>
+              <input
                 name="comment"
-                className=""
                 value={time.comment}
                 onChange={handleChangeTime}
                 required
+                className="modal__comment input"
               />
             </div>
-            <div className="btns">
-              <button type="submit" className="btn-submit">Сохранить</button>
+            <div className="modal__btns">
+              <button type="submit" className="btn btn-primary">Сохранить</button>
+              <button onClick={handleCancel} className="btn btn-default">Отмена</button>
             </div>
           </form>
       </div>

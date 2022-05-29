@@ -90,10 +90,11 @@ const BoardProfile = observer(() => {
             />
             <div className="profile__about">
               <p className="profile__title">О себе</p>
-              {user.data.about}
+              <div className="profile__about-text">{user.data.about}</div>
             </div>
           </div>
           <div className="profile__info-right">
+          <div className="profile__title">Задачи</div>
           <div className="profile__tasks">
             {filterTasksByUser.length === 0 && <p className="profile__no-tasks">Задач нет!</p>}
             {filterTasksByUser.map(task => (
@@ -108,8 +109,8 @@ const BoardProfile = observer(() => {
                 user={user.data}
                 task={task} />
             ))}
-            <Pagination item={tasksTotal} />
             </div>
+            <Pagination item={tasksTotal} />
           </div>
         </div>
         <Modal

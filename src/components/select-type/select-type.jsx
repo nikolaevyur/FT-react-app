@@ -29,17 +29,18 @@ const SelectType = ({ filters, setFilters }) => {
         onClick={toggleDropdownShown}
         placeholder={"Тип"}
         type="text"
-        className="select-type__input"
+        className="select-type__input input"
+        maxlength="0"
       />
       <div className="select-type__checklist">
         {isDropdownShown &&
           <div className="select-type__dropdown">
             <div className="dropdown__item">
-            <input value={"bug"} type="checkbox" onClick={(event) => handleCheck(event)} />
+            <input value={"bug"} type="checkbox" onClick={(event) => handleCheck(event)} className="input"/>
             <label>Ошибка</label>
             </div>
             <div className="dropdown__item">
-            <input value={"task"} type="checkbox" onClick={(event) => handleCheck(event)} />
+            <input value={"task"} type="checkbox" onClick={(event) => handleCheck(event)} className="input"/>
             <label>Задача</label>
             </div>
           </div>
