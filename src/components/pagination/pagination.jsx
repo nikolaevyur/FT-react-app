@@ -53,7 +53,7 @@ const Pagination = observer(({item}) => {
     > {"Вперед"} </button>
     </div>
     <div>
-    <span className="">
+    <span className="quantity-shown">
       Показано {(page*item.pagination.limit)+1}-{((page*item.pagination.limit)+item.pagination.limit)> totalLength ? totalLength : ((page*item.pagination.limit)+item.pagination.limit) } из {totalLength}
     </span>
     </div>

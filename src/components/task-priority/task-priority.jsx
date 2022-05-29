@@ -25,7 +25,7 @@ const Priority = (props) => {
 
   return (
     <div className={priorityClass}>
-      <img src={srcImg} alt={srcImg} />
+      <img src={srcImg} alt={text} />
       {text}
     </div>
   )

@@ -1,3 +1,7 @@
+.user:nth-child(2n){
+  background-color: #F2F2F2;
+}
+
 .user {
   display: flex;
   flex-direction: row;
