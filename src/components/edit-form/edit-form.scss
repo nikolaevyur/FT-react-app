@@ -1,0 +1,59 @@
+.task {
+  &__form {
+    display: flex;
+    justify-content: start;
+    align-self: flex-start;
+    height: 100%;
+
+    .column__first {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      padding: 0 20px;
+
+      select {
+        padding: 2px;
+        height: 30px;
+        margin: 5px 0 20px 0;
+
+      }
+
+      input {
+        height: 24px;
+        padding: 5px;
+        margin: 5px 0 20px 0;
+        resize: none;
+      }
+    }
+
+    .column__second {
+      width: 400px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+      border-left: #B5B5B5 solid 2px;
+
+      textarea {
+        height: 100%;
+        width: 100%;
+        padding: 5px;
+        margin: 5px 0 0 0;
+        resize: none;
+      }
+
+      fieldset {
+        border: none;
+        padding: 0;
+      }
+
+      .column__description {
+        height: 85%;
+      }
+
+      .column__input--title {
+        height: 16px;
+      }
+    }
+  }
+}

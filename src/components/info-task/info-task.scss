@@ -1,0 +1,32 @@
+@import "../../assets/styles/variables";
+
+.info {
+  display: flex;
+  height: 640px;
+  column-gap: 20px;
+  width: 100%;
+}
+
+.first-column {
+  width: 26%;
+  border-right: 1px solid $grey;
+}
+
+.second-column {
+  width: 33%;
+  border-right: 1px solid $grey;
+
+  &__description {
+    overflow: auto;
+    height: 602px;
+  }
+}
+
+.third-column {
+  width: 41%;
+  overflow: auto;
+}
+
+.column-title {
+  color: $ligth-grey;
+}

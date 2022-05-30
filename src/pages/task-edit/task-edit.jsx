@@ -1,17 +1,16 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 
+import BoardEdit from "../../components/board-edit/board-edit";
 import Header from "../../components/header/header";
-import Authorization from "../../components/authorization/authorization";
 
-const Login = observer (({login}) => {
+const TaskEdit = observer(({tasks}) => {
   return (
     <>
       <Header />
-      <Authorization login={login} />
+      <BoardEdit tasks={tasks}/>
     </>
   )
 })
 
-export default Login;
-
+export default TaskEdit;

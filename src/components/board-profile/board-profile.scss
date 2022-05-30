@@ -1,0 +1,52 @@
+@import "../../assets/styles/variables";
+
+.profile {
+  display: flex;
+  width: 100%;
+
+  &__info {
+    width: 25%;
+    height: 600px;
+    border-right: 1px solid $grey;
+    padding-right: 20px;
+  }
+
+  &__about-text {
+    width: 250px;
+    overflow: hidden;
+  }
+
+  &__title {
+    color: #CCCCCC;
+  }
+
+  &__photo {
+    width: 186px;
+    height: 186px;
+    border: solid 1px #7B61FF;
+    border-radius: 50%;
+  }
+
+  &__info-right {
+    width: 75%;
+    height: 75%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  &__tasks {
+    box-shadow: inset 0px 0px 2px 1px #B5B5B5;
+    border-radius: 3px;
+    width: 100%;
+    height: 560px;
+    padding: 1px;
+  }
+
+  &__no-tasks {
+    font-size: 20px;
+    text-align: center;
+    color: #CCCCCC;
+  }
+}

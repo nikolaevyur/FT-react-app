@@ -1,0 +1,28 @@
+.filters {
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    justify-self: center;
+    position: absolute;
+    left: 17vw;
+    column-gap: 5px;
+  }
+
+  &__input {
+    width: 520px;
+    height: 18px;
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+  }
+
+}
+
+.select-user__input {
+  width: 180px;
+}

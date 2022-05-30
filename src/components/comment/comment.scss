@@ -1,0 +1,28 @@
+.comment {
+  .columns {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .column__left {
+      display: flex;
+      column-gap: 2%;
+      width: 80%;
+
+      .column__title {
+        color: #CCCCCC;
+      }
+    }
+
+    .column__right {
+      display: flex;
+    }
+
+    .column__btn {
+      border: none;
+      outline: none;
+      background-color: #FFFFFF;
+      color: #FF6161;
+    }
+  }
+}

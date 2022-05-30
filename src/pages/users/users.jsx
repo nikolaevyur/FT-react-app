@@ -1,17 +1,16 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 
+import BoardUsers from "../../components/board-users/board-users";
 import Header from "../../components/header/header";
-import Authorization from "../../components/authorization/authorization";
 
-const Login = observer (({login}) => {
+const Users = observer (({users}) => {
   return (
     <>
       <Header />
-      <Authorization login={login} />
+      <BoardUsers users={users} />
     </>
   )
 })
 
-export default Login;
-
+export default Users;

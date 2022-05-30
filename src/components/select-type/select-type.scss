@@ -1,0 +1,17 @@
+.select-type {
+  &__checklist {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+  }
+
+  &__input {
+    width: 98px;
+  }
+
+  .dropdown__item {
+    display: flex;
+    background-color: #FFF;
+  }
+
+}
