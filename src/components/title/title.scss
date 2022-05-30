@@ -1,18 +1,15 @@
-.title{
-  // opacity: 0;
-  // position: absolute;
-    height: 28px;
-    margin-bottom: 20px;
-    width: 100%;
+.title {
+  height: 28px;
+  margin-bottom: 20px;
+  width: 100%;
   max-width: 1320px;
   min-width: 1060px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-
-  &__text{
+  &__text {
     display: flex;
     align-items: center;
     column-gap: 2%;
@@ -22,7 +19,7 @@
     height: 100%;
   }
 
-  &__buttons{
+  &__buttons {
     display: flex;
     width: 50%;
     justify-content: end;

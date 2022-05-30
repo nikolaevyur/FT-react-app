@@ -1,14 +1,13 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 
 import "./title.scss"
 
-const Title = ({children}) => {
+const Title = ({ children }) => {
   return (
     <div className="title">
-     
-        {children}
-
+      {children}
     </div>
-  )}
+  )
+}
 
 export default Title;

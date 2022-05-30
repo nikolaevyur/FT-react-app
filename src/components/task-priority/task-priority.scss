@@ -7,7 +7,7 @@
   margin-right: 15px;
 }
 
-.task__priority{
+.task__priority {
   &-high {
     color: $priority-high__color;
     @extend %priority-wrapper;

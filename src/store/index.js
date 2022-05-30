@@ -8,9 +8,6 @@ class LoginStore {
     makeAutoObservable(this, {}, {
       autoBind: true,
     })
-
-    // onBecomeObserved(this, 'loginUser', this.getLogin);
-
   }
 
   get loginData() {
@@ -54,8 +51,7 @@ class TasksFilter {
       this.loginUser = "Error"
     }
   })
-
-
+  
   async changeTaskStatus(id, status) {
     await changeStatus(id, status);
   }
@@ -78,7 +74,7 @@ class UsersFilter {
       autoBind: true,
     })
 
-    onBecomeObserved(this, 'data', this.fetch);
+    onBecomeObserved(this, "data", this.fetch);
   }
 
   fetch = flow(function* () {
