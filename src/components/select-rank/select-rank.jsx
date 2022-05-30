@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-
-import './select-rank.scss'
+import React, { useState } from "react";
+import "./select-rank.scss";
 
 const SelectRank = ({ filters, setFilters }) => {
-
-  const [isDropdownShown, setDropdownShown] = useState(false)
+  const [isDropdownShown, setDropdownShown] = useState(false);
   const [checked, setChecked] = useState([]);
 
   const toggleDropdownShown = () => {
@@ -19,8 +17,7 @@ const SelectRank = ({ filters, setFilters }) => {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
-    console.log(checked)
-    setFilters({ ...filters, rank: updatedList })
+    setFilters({ ...filters, rank: updatedList });
   };
 
   return (
@@ -36,16 +33,16 @@ const SelectRank = ({ filters, setFilters }) => {
         {isDropdownShown &&
           <div className="select-rank__dropdown">
             <div className="dropdown__item">
-            <input value={"low"} type="checkbox" onClick={handleCheck} className="input"/>
-            <label>Низкий</label>
+              <input value={"low"} type="checkbox" onClick={handleCheck} className="input" />
+              <label>Низкий</label>
             </div>
             <div className="dropdown__item">
-            <input value={"medium"} type="checkbox" onClick={handleCheck} className="input"/>
-            <label>Средний</label>
+              <input value={"medium"} type="checkbox" onClick={handleCheck} className="input" />
+              <label>Средний</label>
             </div>
             <div className="dropdown__item">
-            <input value={"high"} type="checkbox" onClick={handleCheck} className="input"/>
-            <label>Высокий</label>
+              <input value={"high"} type="checkbox" onClick={handleCheck} className="input" />
+              <label>Высокий</label>
             </div>
           </div>
         }

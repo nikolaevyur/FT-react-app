@@ -1,25 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { changeStatus } from "../../api";
 import { AppRoute } from "../../const";
 import { tasksFilter } from "../../store";
+
 import "./task-burger.scss"
 
 const TaskBurger = ({ id, status }) => {
-
-	const changeStatus = (evt) => {
-		evt.preventDefault();
-		 let newStatus = evt.target.value;
-		tasksFilter.changeTaskStatus(id, newStatus)
-    .then(() => window.location.reload())
+  const changeStatus = (evt) => {
+    evt.preventDefault();
+    let newStatus = evt.target.value;
+    tasksFilter.changeTaskStatus(id, newStatus)
+      .then(() => window.location.reload())
   }
 
   const handleDelete = (evt) => {
-		evt.preventDefault();
-		tasksFilter.deleteTask(id)
-    .then(() => window.location.reload())
-	}
-
+    evt.preventDefault();
+    tasksFilter.deleteTask(id)
+      .then(() => window.location.reload())
+  }
 
   return (
     <div className="task__burger dropdown" >
@@ -41,7 +39,7 @@ const TaskBurger = ({ id, status }) => {
           to={""}
           className="task__link"
         >
-          <button 
+          <button
             onClick={handleDelete}
             className="task__link link-out btn-status">
             Удалить
@@ -56,15 +54,15 @@ const TaskBurger = ({ id, status }) => {
             Взять в работу
           </button>
         }
-          {status === "inProgress" &&
-            <button
-              className="task__link btn-status"
-              onClick={changeStatus}
-              value={"testing"}
-            >
-              На тестирование
-            </button>
-          }
+        {status === "inProgress" &&
+          <button
+            className="task__link btn-status"
+            onClick={changeStatus}
+            value={"testing"}
+          >
+            На тестирование
+          </button>
+        }
         {(status === "inProgress" || status === "testing" || status === "complete") &&
           <button
             className="task__link btn-status"

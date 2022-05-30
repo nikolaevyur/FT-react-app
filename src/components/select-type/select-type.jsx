@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import './select-type.scss'
+import "./select-type.scss"
 
 const SelectType = ({ filters, setFilters }) => {
-
   const [isDropdownShown, setDropdownShown] = useState(false)
   const [checked, setChecked] = useState([]);
 
@@ -19,8 +18,7 @@ const SelectType = ({ filters, setFilters }) => {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
-    console.log(checked)
-    setFilters({ ...filters, type: updatedList })
+    setFilters({ ...filters, type: updatedList });
   };
 
   return (
@@ -36,12 +34,12 @@ const SelectType = ({ filters, setFilters }) => {
         {isDropdownShown &&
           <div className="select-type__dropdown">
             <div className="dropdown__item">
-            <input value={"bug"} type="checkbox" onClick={(event) => handleCheck(event)} className="input"/>
-            <label>Ошибка</label>
+              <input value={"bug"} type="checkbox" onClick={(event) => handleCheck(event)} className="input" />
+              <label>Ошибка</label>
             </div>
             <div className="dropdown__item">
-            <input value={"task"} type="checkbox" onClick={(event) => handleCheck(event)} className="input"/>
-            <label>Задача</label>
+              <input value={"task"} type="checkbox" onClick={(event) => handleCheck(event)} className="input" />
+              <label>Задача</label>
             </div>
           </div>
         }

@@ -1,27 +1,27 @@
-.pagination{
+.pagination {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   
-
-  &__btns{
+  &__btns {
     display: flex;
     flex-direction: row;
     column-gap: 5px;
 
-    .btn-pag{
+    .btn-pag {
       padding: 2.5px 7.5px;
       height: 24px;
-  
-      &:active{
+
+      &:active {
         background-color: #7B61FF;
       }
     }
   }
-.quantity-shown{
-  font-size: 14px;
-  color: #B5B5B5;
-}
+
+  .quantity-shown {
+    font-size: 14px;
+    color: #B5B5B5;
+  }
 
 }
