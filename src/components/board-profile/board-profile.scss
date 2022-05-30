@@ -10,11 +10,13 @@
     border-right: 1px solid $grey;
     padding-right: 20px;
   }
-  &__about-text{
+
+  &__about-text {
     width: 250px;
     overflow: hidden;
   }
-  &__title{
+
+  &__title {
     color: #CCCCCC;
   }
 
@@ -25,7 +27,7 @@
     border-radius: 50%;
   }
 
-  &__info-right{
+  &__info-right {
     width: 75%;
     height: 75%;
     padding-left: 20px;
@@ -38,7 +40,7 @@
     box-shadow: inset 0px 0px 2px 1px #B5B5B5;
     border-radius: 3px;
     width: 100%;
-    height: 100%;
+    height: 560px;
     padding: 1px;
   }
 

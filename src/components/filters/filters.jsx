@@ -1,24 +1,24 @@
-import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
-import { tasksFilter } from '../../store';
-import SelectRank from '../select-rank/select-rank';
-import SelectStatus from '../select-status/select-status';
-import SelectType from '../select-type/select-type';
+import React, { useState } from "react";
+import { observer } from "mobx-react-lite";
+import { tasksFilter } from "../../store";
 
-import './filters.scss'
+import SelectRank from "../select-rank/select-rank";
+import SelectStatus from "../select-status/select-status";
+import SelectType from "../select-type/select-type";
+
+import "./filters.scss"
 import "../../assets/styles/_buttons.scss"
 
 
 const Filters = observer((props) => {
   const [filters, setFilters] = useState({
-    query: '',
+    query: "",
     assignedUsers: [],
     type: [],
     status: [],
     rank: [],
   });
   const [checked, setChecked] = useState([]);
-
   const [isDropdownShown, setDropdownShown] = useState(false)
 
   const toggleDropdownShown = () => {
@@ -33,40 +33,37 @@ const Filters = observer((props) => {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
-    console.log(checked)
-    setFilters({ ...filters, assignedUsers: updatedList })
+    setFilters({ ...filters, assignedUsers: updatedList });
   };
 
-  const handlChange = (evt) => { setFilters({ ...filters, query: evt.target.value }) }
+  const handleChange = (evt) => { setFilters({ ...filters, query: evt.target.value }) };
 
   const handlSubmit = (evt) => {
     evt.preventDefault();
     tasksFilter.preFilter = filters;
     tasksFilter.pagination.page = 0;
     tasksFilter.fetch();
-    console.log(tasksFilter.data)
-    setDropdownShown(false)
+    setDropdownShown(false);
   }
 
-  console.log(filters)
   return (
     <div className="filters__wrapper">
       <SelectType filters={filters} setFilters={setFilters} />
       <input
         className="filters__input input"
         type="text"
-        onChange={handlChange}
+        onChange={handleChange}
         value={filters.query}
         placeholder="Название задачи"
       />
       <div className="filters__checklist">
-      <input 
-        onClick={toggleDropdownShown} 
-        placeholder={"Пользователь"} 
-        type="text"
-        className="select-user__input input"
-        maxlength="0"
-      />
+        <input
+          onClick={toggleDropdownShown}
+          placeholder={"Пользователь"}
+          type="text"
+          className="select-user__input input"
+          maxlength="0"
+        />
         <div className="filters__dropdown">
           {isDropdownShown && props.users.map(user => (
             <div key={user.id}>
@@ -76,8 +73,8 @@ const Filters = observer((props) => {
           ))}
         </div>
       </div>
-      <SelectStatus 
-        filters={filters} 
+      <SelectStatus
+        filters={filters}
         setFilters={setFilters} />
       <SelectRank filters={filters} setFilters={setFilters} />
       <button className="btn btn-primary" onClick={handlSubmit}>

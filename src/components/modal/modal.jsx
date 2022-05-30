@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { editUser } from "../../api";
-import { AppRoute } from "../../const";
 
 import "./modal.scss";
 import "../../assets/styles/_buttons.scss";
 
 const Modal = ({ active, setActive, user, loginUser }) => {
-  //Form of user
   const [form, setForm] = useState(user);
 
   const handleFieldChange = (evt) => {
@@ -60,7 +58,7 @@ const Modal = ({ active, setActive, user, loginUser }) => {
             />
           </div>
           <div className="modal__third">
-          <label className="modal__title">О себе</label>
+            <label className="modal__title">О себе</label>
             <input
               name="about"
               className="modal__comment input"

@@ -10,17 +10,13 @@
 .first-column {
   width: 26%;
   border-right: 1px solid $grey;
-
-  &__info-task {
-
-  }
 }
 
 .second-column {
   width: 33%;
   border-right: 1px solid $grey;
 
-  &__description{
+  &__description {
     overflow: auto;
     height: 602px;
   }

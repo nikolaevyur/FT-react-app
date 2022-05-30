@@ -1,7 +1,6 @@
 @import "../../assets/styles/variables";
 
 .header {
-
   &__user {
     display: flex;
     flex-direction: row;
@@ -44,7 +43,7 @@
     border-radius: 3px;
   }
 
-  &__link:hover{
+  &__link:hover {
     background-color: #7B61FF;
     color: #FFFFFF;
   }
@@ -53,7 +52,7 @@
     color: $red;
   }
 
-  .link-out:hover{
+  .link-out:hover {
     background-color: red;
     color: #FFFFFF;
   }

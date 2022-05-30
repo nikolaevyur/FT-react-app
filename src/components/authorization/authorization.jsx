@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { observer } from 'mobx-react-lite';
-import { AppRoute } from '../../const';
+import React, { useState } from "react";
+import { observer } from "mobx-react-lite";
+import { AppRoute } from "../../const";
 
 import "../../components/authorization/authorization.scss";
 import "../../assets/styles/_buttons.scss"
 
 const Authorization = observer(({ login }) => {
-
   const [form, setForm] = useState(
     {
       login: "",
@@ -18,7 +17,7 @@ const Authorization = observer(({ login }) => {
     await login.getLogin(form)
     if (login.loginUser.id) {
       localStorage.setItem("login", true);
-      localStorage.setItem("loginUser", JSON.stringify({...login.loginUser, password: form.password}))
+      localStorage.setItem("loginUser", JSON.stringify({ ...login.loginUser, password: form.password }))
       window.location.assign(AppRoute.MAIN)
     }
     else {
@@ -30,8 +29,6 @@ const Authorization = observer(({ login }) => {
     const { name, value } = evt.target;
     setForm({ ...form, [name]: value })
   }
-
-  // console.log(login.loginUser.username)
 
   return (
     <div className="login">

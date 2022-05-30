@@ -1,85 +1,59 @@
-.task{
-    &__form{
-      display: flex;
-      justify-content: start;
-      align-self: flex-start;
-      height: 100%;
+.task {
+  &__form {
+    display: flex;
+    justify-content: start;
+    align-self: flex-start;
+    height: 100%;
 
-      .column__first{
-        display: flex;
-        flex-direction: column;
-        width: 300px;
-        padding: 0 20px;
-        
-        select{
-          padding: 2px;
-          height: 30px;
-          margin: 5px 0 20px 0;
-          
-        }
-        
-        input{
-          height: 24px;
-          padding: 5px;
-          margin: 5px 0 20px 0;
-          resize: none;
-        }
+    .column__first {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      padding: 0 20px;
+
+      select {
+        padding: 2px;
+        height: 30px;
+        margin: 5px 0 20px 0;
+
       }
 
-      .column__second{
-        width: 400px;
+      input {
+        height: 24px;
+        padding: 5px;
+        margin: 5px 0 20px 0;
+        resize: none;
+      }
+    }
+
+    .column__second {
+      width: 400px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+      border-left: #B5B5B5 solid 2px;
+
+      textarea {
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        padding: 0 20px;
-        border-left: #B5B5B5 solid 2px;
+        width: 100%;
+        padding: 5px;
+        margin: 5px 0 0 0;
+        resize: none;
+      }
 
-        textarea{
-          height: 100%;
-          width: 100%;
-          padding: 5px;
-          margin: 5px 0 0 0;
-          resize: none;
-        }
+      fieldset {
+        border: none;
+        padding: 0;
+      }
 
-        fieldset{
-          border: none;
-          padding: 0;
-        }
+      .column__description {
+        height: 85%;
+      }
 
-        .task__field--description{
-          height: 85%;
-        }
-
-        .task__input--title{
-          height: 16px;
-        }
+      .column__input--title {
+        height: 16px;
+      }
     }
   }
 }
-
-// .board__form{
-
-
-//   &-data{
-//     width: 26%;
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     padding: 0 20px;
-//   }
-//   &-info{
-//     width: 35%;
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     padding: 0 20px;
-//     border-right: #B5B5B5 solid 2px;
-//     border-left: #B5B5B5 solid 2px;
-//   }
-//   &-comments{
-//     width: 40%;
-//     height: 100%;
-//     padding: 0 20px;
-//   }
-// }

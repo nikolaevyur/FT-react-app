@@ -8,14 +8,11 @@
     column-gap: 5px;
   }
 
-  &__input{
+  &__input {
     width: 520px;
     height: 18px;
   }
 
-  &__cheklist {
-  
-  }
   &__dropdown {
     display: flex;
     flex-direction: column;
@@ -25,6 +22,7 @@
   }
 
 }
-.select-user__input{
+
+.select-user__input {
   width: 180px;
 }

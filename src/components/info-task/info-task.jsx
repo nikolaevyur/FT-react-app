@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import "./info-task.scss";
-import { observer } from "mobx-react-lite";
 import { Link, useParams } from "react-router-dom";
-import { getTask, addComment } from "../../api";
+import { getTask } from "../../api";
 import { getComments } from "../../api";
 import { AppRoute, rank } from "../../const";
+import { tasksFilter } from "../../store";
 import moment from "moment";
+
 import Comment from "../comment/comment";
-import { tasks, users, comments, tasksFilter } from "../../store";
 import CommentAdd from "../comment-add/comment-add";
-import Modal from "../modal/modal";
 import ModalTime from "../modal-time/modal-time";
 import Title from "../title/title";
 import Status from "../task-status/task-status";
 
+import "./info-task.scss";
+
+
 const InfoTask = (props) => {
   const { id } = useParams();
-
   const [task, setTask] = useState(null);
   const [comment, setComment] = useState(null);
   const [modalActive, setModalActive] = useState(false);
@@ -36,69 +36,52 @@ const InfoTask = (props) => {
   // USERNAME
   const assignedUser = props.user.find(u => u.id === task.data.assignedId),
     author = props.user.find(u => u.id === task.data.userId);
+  const loginUserData = JSON.parse(localStorage.getItem("loginUser"));
 
   // TIME
-  const formatDateOfCreation = moment(task.data.dateOfCreation).format('DD.MM.YYYY HH:mm'),
-    formatDateOfUpdate = moment(task.data.dateOfUpdate).format('DD.MM.YYYY HH:mm');
+  const formatDateOfCreation = moment(task.data.dateOfCreation).format("DD.MM.YYYY HH:mm"),
+    formatDateOfUpdate = moment(task.data.dateOfUpdate).format("DD.MM.YYYY HH:mm");
 
   const timeInMinutes = task.data.timeInMinutes,
     hours = Math.floor(timeInMinutes / 60),
     minutes = Math.floor(timeInMinutes) - (hours * 60);
 
-
-  const loginUserData = JSON.parse(localStorage.getItem("loginUser"));
-  // ADD COMMENTS
-  // const [text, setText] = useState("");
-
-  // const handleSubmit = (evt) => {
-  // 	evt.preventDefault();
-  // 	comments.addComment({
-  // 		taskId : id,
-  // 		userId : "",
-  // 		text : text
-  // 	});
-  // 	evt.target.reset();
-  // }
-
-  // const handleText = (evt) => {
-  //   setComment(evt.target.value)
-  // }
   const changeStatus = (evt) => {
-		evt.preventDefault();
-		 let newStatus = evt.target.value;
-		tasksFilter.changeTaskStatus(id, newStatus)
-    .then(() => window.location.reload())
+    evt.preventDefault();
+    let newStatus = evt.target.value;
+    tasksFilter.changeTaskStatus(id, newStatus)
+      .then(() => window.location.reload())
   }
 
   const handleDelete = (evt) => {
-		evt.preventDefault();
-		tasksFilter.deleteTask(id)
-    .then(() => window.location.reload())
-	}
+    evt.preventDefault();
+    tasksFilter.deleteTask(id)
+      .then(() => window.location.reload())
+  }
   return (
     <div className="wrapper">
       <Title>
-      <div className="title__text">
-        {task.data.title}
-        <Status status={task.data.status}/>
-      </div>
-      <div className="title__buttons">
-        {task.data.status === "opened" &&
+        <div className="title__text">
+          {task.data.title}
+          <Status status={task.data.status} />
+        </div>
+        <div className="title__buttons">
+          {task.data.status === "opened" &&
+            <button
+              className="btn btn-default"
+              onClick={changeStatus}
+              value={"inProgress"}
+            >
+              Взять в работу
+            </button>
+          }
+          <Link to={`${AppRoute.ADD}/${id}`} ><button className="btn btn-primary">Редактировать</button></Link>
           <button
-            className="btn btn-default"
-            onClick={changeStatus}
-            value={"inProgress"}
-          >
-            Взять в работу
-          </button>
-        }
-        <Link to={`${AppRoute.ADD}/${id}`} ><button className="btn btn-primary">Редактировать</button></Link>
-         <button 
             onClick={handleDelete}
             className="btn btn-error">
             Удалить
           </button>
-      </div>
+        </div>
       </Title>
       <div className="board">
         <div className="info">

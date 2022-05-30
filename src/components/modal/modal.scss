@@ -1,7 +1,7 @@
-.modal{
+.modal {
   height: 100vh;
   width: 100vw;
-  background-color: rgba(181, 181, 181, 0.35);;
+  background-color: rgba(181, 181, 181, 0.35);
   position: fixed;
   top: 0;
   left: 0;
@@ -12,8 +12,7 @@
   transition: 0.5s;
   pointer-events: none;
 
-  
-  &__content{
+  &__content {
     padding: 20px;
     border-radius: 5px;
     background-color: #fff;
@@ -21,36 +20,36 @@
     height: 405px;
   }
 
-  &__form{
+  &__form {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
   }
 
-  &__main-title{
+  &__main-title {
     font-size: 20px;
     line-height: 23px;
     padding-bottom: 20px;
     border-bottom: solid 1px #B5B5B5;
   }
 
-  &__title{
+  &__title {
     color: #CCCCCC;
   }
 
-  &__first{
+  &__first {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
   }
 
-  &__second{
+  &__second {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
   }
 
-  &__third{
+  &__third {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
@@ -58,18 +57,17 @@
     border-bottom: solid 1px #B5B5B5;
   }
 
-  &__comment{
+  &__comment {
     height: 80px;
   }
 
-  &__btns{
+  &__btns {
     display: flex;
     column-gap: 10px;
   }
 }
 
-.active{
+.active {
   opacity: 1;
   pointer-events: all;
 }
-

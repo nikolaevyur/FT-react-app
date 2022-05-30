@@ -1,8 +1,10 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
+
 import HeaderMenu from "../header-menu/header-menu";
 import HeaderUser from "../header-user/header-user";
+
 import "./header.scss"
 
 const Header = () => {
@@ -12,7 +14,7 @@ const Header = () => {
         <div className="header__logo"></div>
       </Link>
       <HeaderMenu />
-      <HeaderUser/>
+      <HeaderUser />
     </div>
   )
 }
