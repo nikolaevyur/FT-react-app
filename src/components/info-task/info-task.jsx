@@ -56,7 +56,7 @@ const InfoTask = (props) => {
   const handleDelete = (evt) => {
     evt.preventDefault();
     tasksFilter.deleteTask(id)
-      .then(() => window.location.reload())
+      .then(() => window.history.back())
   }
   return (
     <div className="wrapper">
